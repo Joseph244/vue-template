@@ -1,0 +1,42 @@
+@color-title: #ffffff; // 系统标题色
+@headerHeight: 54px;
+@headerBg: #519fee; // 标题背景色
+
+@color-white: #ffffff; // 基础白色
+@color-grey: #cdd7d6; // 基础灰色
+@color-black: #000000; // 基础黑
+
+@color-text-primary: #000000; // 主要文字
+@color-text-secondary: #273945; // 次要文字颜色
+@disabled-color : #b2bbc4; // 失效色
+@color-text-placeholder: #c0c4cc; // 占位颜色
+
+@color-primary: #519fee; // 全局主色,link色
+@color-info: #00a3a2; // 常规色
+@color-success: #0ecdc5;
+@color-highlight: #f8d905; // 强调色
+@color-warning: #ffa62e; // 警告色
+@color-danger: #fb726a; // 错误色
+
+@background-color-base: #ffffff; // 主体大背景色
+
+@border-radius-base: 4px; // 组件/浮层圆角
+@border-color: #c7c7c7; // 边框色
+
+// 全局滚动条
+::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+    //   background-color: rgba(17, 122, 122, 0.4);
+}
+::-webkit-scrollbar-thumb {
+    height: 5px;
+    border-radius: 10px;
+    //   background-color: #2de1e2;
+}
+::-webkit-scrollbar-corner {
+    //   background: transparent;
+}
+
+// 手动自定义element样式
+@import './custom/index.less';

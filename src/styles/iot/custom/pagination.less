@@ -1,0 +1,58 @@
+.el-pagination {
+    button:disabled {
+        color: #c0c4cc;
+        background: none;
+    }
+    .el-pagination__total,
+    .el-input__inner,
+    .el-pagination__jump {
+        color: @iot_light;
+    }
+
+    .el-input__inner {
+        background-color: #02938f;
+        border-radius: 0px;
+        border: 1px solid @iot_light;
+    }
+
+    .el-pager li,
+    .btn-next,
+    .btn-prev {
+        color: @iot_light;
+        background: none;
+    }
+
+    .el-pager li.active {
+        color: @iot_light;
+        background: #037a76;
+    }
+    .el-select {
+        .el-input .el-input__inner {
+            border-radius: 0px;
+        }
+    }
+}
+
+/* 分页下拉框 */
+.myPageDropdown {
+    border: 1px solid @iot_light;
+    background-color: #034b4a;
+    border-radius: 0px;
+    .el-select-dropdown__list {
+        padding: 0px;
+        background-color: #034b4a;
+    }
+
+    .el-select-dropdown__item.hover,
+    .el-select-dropdown__item:hover {
+        background-color: #02938f;
+    }
+
+    .el-select-dropdown__item {
+        color: #55c0bb;
+    }
+
+    .el-select-dropdown__item.selected {
+        color: @iot_light;
+    }
+}
