@@ -1,0 +1,27 @@
+.container {
+    .title {
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #00ffff;
+
+        > h2 {
+            font-size: 18px;
+            color: #35cbeb;
+        }
+
+        .icon {
+            font-size: 28px;
+            color: #f8d905;
+        }
+
+        .up {
+            transition: all 0.5s;
+        }
+        .down {
+            transform: rotate(-180deg);
+            transition: all 0.5s;
+        }
+    }
+}

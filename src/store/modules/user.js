@@ -35,7 +35,6 @@ const userStore = {
     mutations: {
         SET_ROUTES: (state, routes = routers) => {
             const _arr = filterAsyncRoutes(routes);
-            console.log('routes', _arr);
             state.routes = _arr;
         }
     },

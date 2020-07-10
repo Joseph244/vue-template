@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const SentryPlugin = require('@sentry/webpack-plugin');
 process.env.VUE_APP_VERSION = require('./package.json').version;
 
 function resolve(dir) {
@@ -13,10 +14,10 @@ module.exports = {
     publicPath: process.env.PUBLICPATH || '/',
     devServer: {
         // proxy: 'http://192.168.78.106:8081/messageRouteApp/'
-        proxy: process.env.VUE_APP_BASEURL
+        proxy: process.env.VUE_APP_SERVER
     },
     pluginOptions: {
-        // 全局less变量预导入（县东港与全局最先导入的基础配置）
+        // 全局less变量预导入（全局最先导入的基础配置）
         'style-resources-loader': {
             preProcessor: 'less',
             patterns: [resolve('src/styles/index.less')]
@@ -31,5 +32,17 @@ module.exports = {
                 'window.Quill': 'quill'
             }
         ]);
+        if (process.env.NODE_ENV === 'production') {
+            config.plugin('sentry').use(SentryPlugin, [
+                {
+                    ignore: ['node_modules'],
+                    include: './dist/js', //上传dist文件的js
+                    configFile: './.sentryclirc', //配置文件地址
+                    release: process.env.VUE_APP_VERSION, //版本号
+                    deleteAfterCompile: true,
+                    urlPrefix: 'http://192.168.78.104:3001/partialdischargesystem/' //线上 js的代码路径前缀
+                }
+            ]);
+        }
     }
 };

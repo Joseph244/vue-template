@@ -1,17 +1,19 @@
 module.exports = {
-    projectName: '局放智能诊断系统', // 项目名称
-    // 根据需要进行配置，如只需部署prod线上环境，请删除dev测试环境配置，反之亦然，支持多环境部署
+    projectName: '局方智能诊断系统', // 项目名称
+    // 前端打包脚本（注释掉即不执行该命令，直接执行后续更新）
+    script: 'npm run build',
+
+    // （1）单纯前端更新dist静态资源配置案例（无docker）
     104: {
-        name: '104环境',
-        script: 'npm run build', // 线上环境打包脚本
-        host: '192.168.78.104', // 测试服务器地址,其中xxx为ip
-        port: 22, // ssh port，一般默认22
-        username: 'root', // 登录服务器用户名
-        password: '123456', // 登录服务器密码
-        distPath: 'dist', // 本地打包dist目录,也不加斜杠
-        webDir: '/opt/nginx/resources/jfSystem' // 打包文件上传服务器地址(末尾不要加斜杠)
+        name: '104环境', // 环境名称
+        host: '192.168.78.104', // 服务器ip地址
+        port: 22, // ssh连接端口（一般默认22）
+        username: 'root', // ssh登录服务器用户名
+        password: '123456', // ssh登录服务器密码
+        distPath: 'dist', // 当前工程下该文件夹下所有文件上传服务器（前不加斜杠表示当前工程目录下相对路径，如前加斜杠就是本机绝对路径)
+        webDir: '/root/zzftest/' // 文件上传服务器绝对路径
         // dockerName: "messageroute", // docker名称
-        // dockerWebDir: "/usr/app/", // 容器中文件存放位置
+        // dockerWebDir: "/usr/app", // 容器中文件存放位置
+        // lastCmd: 'pm2 restart app' // 所有动作执行完之后在服务器上执行的自定义命令(不配置即不执行)
     }
-    // 再还有多余的环境按照这个格式写即可
 };

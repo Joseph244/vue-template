@@ -2,7 +2,7 @@ import Axios from 'axios'; // 此处引入axios官方文件
 import { Notification } from 'element-ui';
 
 const axios = Axios.create({
-    baseURL: './messageRoute',
+    baseURL: process.env.VUE_APP_BASEURL || '',
     timeout: 30000
 });
 
@@ -46,13 +46,13 @@ axios.interceptors.response.use(
             // 自定义约定接口返回{code: xxx, data: xxx, msg:'err message'}
             // code:200 数据正常； ！200 数据获取异常
             if (response.data.code == 200) {
-                if (response.config.method.toLocaleLowerCase() === 'post' || response.config.method.toLocaleLowerCase() === 'put') {
-                    Notification({
-                        title: '成功',
-                        message: response.data.msg,
-                        type: 'success'
-                    });
-                }
+                // if (response.config.method.toLocaleLowerCase() === 'post' || response.config.method.toLocaleLowerCase() === 'put') {
+                //     Notification({
+                //         title: '成功',
+                //         message: response.data.msg,
+                //         type: 'success'
+                //     });
+                // }
                 return response.data.data;
             } else {
                 Notification({

@@ -42,11 +42,38 @@ export const appRouter = [
                 }
             },
             {
+                path: '/newEquDiagnose',
+                name: 'newEquDiagnose',
+                title: '新建设备诊断',
+                // hidden: true,
+                component: resolve => {
+                    require(['@/views/taskManage/newEquDiagnose.vue'], resolve);
+                }
+            },
+            {
                 path: '/equDiagnose',
                 name: 'equDiagnose',
                 title: '设备诊断',
                 component: resolve => {
                     require(['@/views/taskManage/equDiagnose.vue'], resolve);
+                }
+            },
+            {
+                path: '/noEquDiagnoseDetail/:taskId',
+                name: 'noEquDiagnoseDetail',
+                title: '无设备诊断详情',
+                // hidden: true,
+                component: resolve => {
+                    require(['@/views/taskManage/noEquDiagnoseDetail.vue'], resolve);
+                }
+            },
+            {
+                path: '/equDiagnoseDetail/:taskId',
+                name: 'equDiagnoseDetail',
+                title: '设备诊断详情',
+                // hidden: true,
+                component: resolve => {
+                    require(['@/views/taskManage/equDiagnoseDetail.vue'], resolve);
                 }
             }
         ]
@@ -73,6 +100,15 @@ export const appRouter = [
                 title: '设备台账',
                 component: resolve => {
                     require(['@/views/standingBook/equStandingBook.vue'], resolve);
+                }
+            },
+            {
+                path: '/defectDetail',
+                name: 'defectDetail',
+                title: '缺陷详情',
+                // hidden: true,
+                component: resolve => {
+                    require(['@/views/standingBook/defectDetail.vue'], resolve);
                 }
             }
         ]

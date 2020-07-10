@@ -1,23 +1,23 @@
 <template>
     <header :class="$style.systemHeader">
-        <!-- <div :class="$style.compony">
-            <img :class="$style.componyLogo" v-show="componyInfo.componyLogo" src="../../images/stateGrid_whiteLogo.png" />
+        <div :class="$style.company">
+            <img :class="$style.companyLogo" v-show="companyInfo.companyLogo" src="../../images/stateGrid_whiteLogo.png" />
             <div>
                 <div :class="$style.chineseTitle">
-                    {{ componyInfo.mainTitle.split('/')[0] || '' }}
+                    {{ companyInfo.mainTitle.split('/')[0] || '' }}
                 </div>
                 <div :class="$style.englishTitle">
-                    {{ componyInfo.subTitle.split('/')[0] || '' }}
+                    {{ companyInfo.subTitle.split('/')[0] || '' }}
                 </div>
-                <div v-show="componyInfo.mainTitle" style="border:1px solid #c4fafa9c;width:10em;"></div>
+                <div v-show="companyInfo.mainTitle" style="border:1px solid #c4fafa9c;width:10em;"></div>
                 <div :class="$style.chineseTitle">
-                    {{ componyInfo.mainTitle.split('/')[1] || '' }}
+                    {{ companyInfo.mainTitle.split('/')[1] || '' }}
                 </div>
                 <div :class="$style.englishTitle">
-                    {{ componyInfo.subTitle.split('/')[1] || '' }}
+                    {{ companyInfo.subTitle.split('/')[1] || '' }}
                 </div>
             </div>
-        </div> -->
+        </div>
         <img src="../../images/title-decorate.png" :class="$style.titleBefore" />
         <img :class="$style.titleLogo" alt="" />
         <span :class="$style.title">
@@ -31,12 +31,12 @@ export default {
     name: 'Header',
     data() {
         return {
-            componyInfo: {
-                componyLogo: '../../images/stateGrid_whiteLogo.png',
+            companyInfo: {
+                companyLogo: '../../images/stateGrid_whiteLogo.png',
                 mainTitle: '国家电网/国网江苏省电力有限公司电力科学研究院',
                 subTitle: 'STATE GRID/STATE GRID JIANGSU ELECTRIC POWER CO.,LTD RESEARCH INSTITUT'
             },
-            title: 'xxxxxx系统'
+            title: '局放智能诊断系统'
         };
     },
     computed: {
@@ -66,7 +66,7 @@ export default {
     span {
         line-height: @headerHeight;
     }
-    .compony {
+    .company {
         position: absolute;
         left: 20px;
         color: @color-title;
@@ -74,7 +74,7 @@ export default {
         color: #c4fafa;
         font-family: 黑体;
         display: flex;
-        .componyLogo {
+        .companyLogo {
             height: 1.8em;
             margin-right: 5px;
         }

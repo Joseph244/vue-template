@@ -50,7 +50,7 @@ export default {
         }
     }
     .content {
-        height: 200px;
+        height: 140px;
         display: flex;
         justify-content: center;
         align-items: center;

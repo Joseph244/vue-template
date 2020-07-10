@@ -21,10 +21,31 @@
             color: #0ff;
         }
     }
+
+    .el-input-group__append,
     .el-input-group__prepend {
-        background-color: rgba(0, 255, 247, 0.25);
+        background-color: #059c9c;
         border-color: rgb(0, 255, 255);
-        color: #0ff;
+        color: #fff;
+        border-radius: 0;
+        font-size: 16px;
+    }
+}
+
+.el-textarea__inner {
+    color: #ffffff;
+    border: 1px solid rgb(0, 255, 255);
+    border-radius: 0px;
+    background-color: rgba(0, 255, 247, 0.25);
+    outline: none;
+    font-family: 'Microsoft YaHei';
+
+    &:hover {
+        border-color: rgb(0, 255, 255);
+    }
+    &::-webkit-input-placeholder {
+        color: #84c4c2;
+        font-family: 'Microsoft YaHei';
     }
 }
 

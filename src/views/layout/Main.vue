@@ -1,11 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: ZZF
- * @Date: 2020-06-08 15:31:51
- * @LastEditors: ZZF
- * @LastEditTime: 2020-06-15 14:18:21
--->
 <template>
     <div :class="$style.main">
         <Header></Header>
@@ -28,6 +20,7 @@ export default {
     },
     mounted() {
         this.$store.commit('SET_ROUTES');
+        this.$store.dispatch('equDict');
     },
 
     methods: {
