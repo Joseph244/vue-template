@@ -16,6 +16,36 @@ module.exports = {
     extends: ['plugin:vue/recommended', 'eslint:recommended'],
     plugins: ['babel', 'prettier'],
     rules: {
+        'vue/max-attributes-per-line': [
+            2,
+            {
+                singleline: 10,
+                multiline: {
+                    max: 1,
+                    allowFirstLine: false
+                }
+            }
+        ],
+        'vue/html-closing-bracket-spacing': [
+            'error',
+            {
+                startTag: 'never',
+                endTag: 'never'
+            }
+        ],
+        'vue/html-self-closing': [
+            'error',
+            {
+                html: {
+                    void: 'always',
+                    normal: 'never',
+                    component: 'always'
+                },
+                svg: 'always',
+                math: 'always',
+                i: 'always'
+            }
+        ],
         'no-debugger': 2,
         'generator-star-spacing': 'off',
         'no-tabs': 'off',

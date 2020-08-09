@@ -4,18 +4,15 @@
 
 <template>
   <div :class="$style.container">
-    <div
-      id="stationTopology"
-      ref="con"
-      style="width: 100%; height: 100%"
-    />
+    <div id="stationTopology" ref="con" style="width: 100%; height: 100%"></div>
     <ul :class="$style.legend">
-      <li><img src="/topologyIcon/num3.png"> 接入节点</li>
-      <li><img src="/topologyIcon/num4.png"> 汇聚节点</li>
-      <li><img src="/topologyIcon/num5.png"> 传感器</li>
-      <li><i :class="$style.greenCircle" /> 在线</li>
-      <li><i :class="$style.greyCircle" /> 离线</li>
-      <li><i :class="$style.redCircle" /> 告警</li>
+      <!-- 静态资源绝对路径引用要注意打包之后的publicPath -->
+      <li><img :src="`${PUBLICPATH}/topologyIcon/num3.png`" /> 接入节点</li>
+      <li><img :src="`${PUBLICPATH}/topologyIcon/4mnu.png`" /> 汇聚节点</li>
+      <li><img :src="`${PUBLICPATH}/topologyIcon/5mnu.png`" /> 传感器</li>
+      <li><i :class="$style.greenCircle"></i> 在线</li>
+      <li><i :class="$style.greyCircle"></i> 离线</li>
+      <li><i :class="$style.redCircle"></i> 告警</li>
     </ul>
   </div>
 </template>
@@ -27,8 +24,8 @@ import api from '@/api/topology';
 export default {
     props: {
         stationId: {
-            type: String
-            // required: true
+            type: String,
+            required: true
         }
     },
     data() {
@@ -128,7 +125,13 @@ export default {
                 })
                 .attr(
                     'xlink:href',
-                    d => ['/topologyIcon/stationBig.png', '/topologyIcon/access.png', '/topologyIcon/convergence.png', '/topologyIcon/sensorType.png'][d.type]
+                    d =>
+                        [
+                            `${this.PUBLICPATH}/topologyIcon/stationBig.png`,
+                            `${this.PUBLICPATH}/topologyIcon/access.png`,
+                            `${this.PUBLICPATH}/topologyIcon/convergence.png`,
+                            `${this.PUBLICPATH}/topologyIcon/sensorType.png`
+                        ][d.type]
                 )
                 .style('cursor', 'pointer')
                 .on('click', (d, i) => {
@@ -208,16 +211,16 @@ export default {
                 .data(function(d, i) {
                     if (d.type === 0)
                         return [
-                            { icon: '/topologyIcon/num3.png', data: d.accessInfo, title: '接入节点' },
-                            { icon: '/topologyIcon/num4.png', data: d.convergenceInfo, title: '汇聚节点' },
-                            { icon: '/topologyIcon/num5.png', data: d.sensorInfo, title: '传感器' }
+                            { icon: `${this.PUBLICPATH}/topologyIcon/num3.png`, data: d.accessInfo, title: '接入节点' },
+                            { icon: `${this.PUBLICPATH}/topologyIcon/num4.png`, data: d.convergenceInfo, title: '汇聚节点' },
+                            { icon: `${this.PUBLICPATH}/topologyIcon/num5.png`, data: d.sensorInfo, title: '传感器' }
                         ];
                     if (d.type === 1)
                         return [
-                            { icon: '/topologyIcon/num4.png', data: d.convergenceInfo, title: '汇聚节点' },
-                            { icon: '/topologyIcon/num5.png', data: d.sensorInfo, title: '传感器' }
+                            { icon: `${this.PUBLICPATH}/topologyIcon/num4.png`, data: d.convergenceInfo, title: '汇聚节点' },
+                            { icon: `${this.PUBLICPATH}/topologyIcon/num5.png`, data: d.sensorInfo, title: '传感器' }
                         ];
-                    return [{ icon: '/topologyIcon/num5.png', data: d.sensorInfo, title: '传感器' }];
+                    return [{ icon: `${this.PUBLICPATH}/topologyIcon/num5.png`, data: d.sensorInfo, title: '传感器' }];
                 })
                 .enter()
                 .append('g')

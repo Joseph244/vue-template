@@ -67,7 +67,7 @@
         :class="['first', activeParent === item.name ? 'activeParent' : '']"
         @click="gotoRoute(item)"
       >
-        <i :class="item.icon" />{{ item.title }}
+        <i :class="item.icon"></i>{{ item.title }}
       </nav>
       <div
         v-for="child in item.children"
@@ -78,7 +78,7 @@
         <i
           v-if="activeMenu === child.name"
           class="el-icon-caret-right activeIcon"
-        /> {{ child.title }}
+        ></i> {{ child.title }}
       </div>
     </div>
   </aside>

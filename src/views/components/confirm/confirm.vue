@@ -13,7 +13,7 @@
       <i
         class="el-icon-warning"
         :class="$style.icon"
-      />
+      ></i>
       {{ message }}
     </div>
 

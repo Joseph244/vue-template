@@ -5,7 +5,7 @@
         v-show="companyInfo.companyLogo"
         :class="$style.companyLogo"
         src="../../images/stateGrid_whiteLogo.png"
-      >
+      />
       <div>
         <div :class="$style.chineseTitle">
           {{ companyInfo.mainTitle.split('/')[0] || '' }}
@@ -16,7 +16,7 @@
         <div
           v-show="companyInfo.mainTitle"
           style="border:1px solid #c4fafa9c;width:10em;"
-        />
+        ></div>
         <div :class="$style.chineseTitle">
           {{ companyInfo.mainTitle.split('/')[1] || '' }}
         </div>
@@ -28,18 +28,18 @@
     <img
       src="../../images/title-decorate.png"
       :class="$style.titleBefore"
-    >
+    />
     <img
       :class="$style.titleLogo"
       alt=""
-    >
+    />
     <span :class="$style.title">
       {{ title }}
     </span>
     <img
       src="../../images/title-decorate.png"
       :class="$style.titleAfter"
-    >
+    />
   </header>
 </template>
 <script>

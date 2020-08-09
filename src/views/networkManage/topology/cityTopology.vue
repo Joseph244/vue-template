@@ -4,17 +4,13 @@
 
 <template>
   <div :class="$style.container">
-    <div
-      id="cityTopology"
-      ref="con"
-      style="width: 100%; height: 100%"
-    />
+    <div id="cityTopology" ref="con" style="width: 100%; height: 100%"></div>
     <ul :class="$style.legend">
-      <li><img src="/topologyIcon/num1.png"> 变电</li>
-      <li><img src="/topologyIcon/num1.png"> 输电</li>
-      <li><i :class="$style.greenCircle" /> 在线</li>
-      <li><i :class="$style.greyCircle" /> 离线</li>
-      <li><i :class="$style.redCircle" /> 告警</li>
+      <li><img :src="`${PUBLICPATH}/topologyIcon/num1.png`" /> 变电</li>
+      <li><img :src="`${PUBLICPATH}/topologyIcon/num1.png`" /> 输电</li>
+      <li><i :class="$style.greenCircle"></i> 在线</li>
+      <li><i :class="$style.greyCircle"></i> 离线</li>
+      <li><i :class="$style.redCircle"></i> 告警</li>
     </ul>
   </div>
 </template>
@@ -117,7 +113,7 @@ export default {
                 .append('image')
                 .attr('width', d => (d.depth > 0 ? 40 : 56))
                 .attr('height', d => (d.depth > 0 ? 40 : 56))
-                .attr('xlink:href', d => (d.depth < 2 ? '/topologyIcon/' + d.name + '.png' : '/topologyIcon/station.png'))
+                .attr('xlink:href', d => (d.depth < 2 ? `${this.PUBLICPATH}/topologyIcon/` + d.name + '.png' : `${this.PUBLICPATH}/topologyIcon/station.png`))
                 .attr('transform', d => ['translate(-62, 0)', 'translate(-45, 10)', 'translate(-20, 0)'][d.depth])
                 .style('cursor', 'pointer')
                 .on('click', this.clickNode);
@@ -194,7 +190,7 @@ export default {
                 .attr('width', 15)
                 .attr('height', 15)
                 .attr('transform', 'translate(7, -12)')
-                .attr('xlink:href', (d, i) => ['/topologyIcon/num1.png', '/topologyIcon/num2.png'][i]);
+                .attr('xlink:href', (d, i) => [`${this.PUBLICPATH}/topologyIcon/num1.png`, `${this.PUBLICPATH}/topologyIcon/num2.png`][i]);
 
             areaNum
                 .append('text')

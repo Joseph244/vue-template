@@ -52,7 +52,7 @@
 </style>
 <template>
   <dl :class="$style.tabs">
-    <dt><slot /></dt>
+    <dt><slot></slot></dt>
     <dd
       v-for="(item, index) in tabConfig"
       :key="index"
@@ -60,7 +60,7 @@
       @click="tabChange(index)"
     >
       <span>{{ item.label }}</span>
-      <i />
+      <i></i>
     </dd>
   </dl>
 </template>

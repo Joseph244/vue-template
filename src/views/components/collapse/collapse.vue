@@ -24,7 +24,7 @@
         v-show="isOpen"
         :class="$style.content"
       >
-        <slot />
+        <slot></slot>
       </div>
     </transUpDown>
   </div>

@@ -44,6 +44,14 @@ Vue.config.productionTip = false;
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$myConfirm = confirm;
 
+// 全局mixin，public下面的静态资源要使用`${PUBLICPATH}/xxx.png`方式引用
+Vue.mixin({
+    computed: {
+        PUBLICPATH() {
+            return process.env.VUE_APP_PUBLICPATH || '';
+        }
+    }
+});
 Vue.use(Global);
 Vue.use(ComponentsLoader);
 Vue.use(ElementUI, { size: 'small', zIndex: 100000 });

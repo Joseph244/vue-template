@@ -15,7 +15,7 @@
       accept="csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
       :http-request="httpRequest"
     >
-      <slot />
+      <slot></slot>
       <!-- <el-button size="small" type="primary">上传</el-button> -->
     </el-upload>
     <el-dialog
@@ -24,7 +24,7 @@
       :close-on-click-modal="false"
       @on-cancel="cancel()"
     >
-      <h4><i class="el-icon-warning" /> 字段缺失或填写错误的数据会自动过滤</h4>
+      <h4><i class="el-icon-warning"></i> 字段缺失或填写错误的数据会自动过滤</h4>
       <el-table
         :data="tableData"
         border

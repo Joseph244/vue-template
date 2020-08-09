@@ -3,95 +3,44 @@
 </style>
 
 <template>
-  <div
-    ref="con"
-    :class="$style.container"
-  >
-    <div id="customTopology" />
+  <div ref="con" :class="$style.container">
+    <div id="customTopology"></div>
 
     <div :class="$style.btns">
       <UploadParseExcel @excelData="getUploadSensor">
-        <el-button
-          type="primary"
-          icon="el-icon-upload"
-        >
+        <el-button type="primary" icon="el-icon-upload">
           上传传感器
         </el-button>
       </UploadParseExcel>
-      <el-button
-        type="primary"
-        icon="el-icon-delete"
-        style="margin-left: 10px"
-        @click="emptyStation"
-      >
+      <el-button type="primary" icon="el-icon-delete" style="margin-left: 10px" @click="emptyStation">
         清空拓扑
       </el-button>
-      <el-button
-        type="primary"
-        icon="el-icon-document-checked"
-        style="margin-left: 10px"
-        @click="submit"
-      >
+      <el-button type="primary" icon="el-icon-document-checked" style="margin-left: 10px" @click="submit">
         保存拓扑
       </el-button>
     </div>
 
     <transition name="el-fade-in-linear">
-      <ul
-        v-show="menuVisible"
-        id="menu"
-        :class="$style.menu"
-      >
-        <el-popover
-          v-if="curMenuItem.type === 3"
-          v-model="sensorTypeMenuVisible"
-          trigger="click"
-          placement="right-start"
-          @hide="hideSensorMenu"
-        >
-          <li
-            slot="reference"
-            :class="$style.menuItem"
-          >
-            <i class="el-icon-connection" /> 挂载传感器
+      <ul v-show="menuVisible" id="menu" :class="$style.menu">
+        <el-popover v-if="curMenuItem.type === 3" v-model="sensorTypeMenuVisible" trigger="click" placement="right-start" @hide="hideSensorMenu">
+          <li slot="reference" :class="$style.menuItem">
+            <i class="el-icon-connection"></i> 挂载传感器
           </li>
-          <ul
-            v-if="getSensorMenu().length > 0"
-            :class="$style.menu2"
-          >
-            <li
-              v-for="(item, index) in getSensorMenu()"
-              :key="index"
-            >
-              <el-popover
-                :value="curShowSensorType === item.sensorType"
-                placement="right-start"
-                @show="curShowSensorType = item.sensorType"
-              >
-                <a
-                  slot="reference"
-                  :class="$style.title"
-                >
+          <ul v-if="getSensorMenu().length > 0" :class="$style.menu2">
+            <li v-for="(item, index) in getSensorMenu()" :key="index">
+              <el-popover :value="curShowSensorType === item.sensorType" placement="right-start" @show="curShowSensorType = item.sensorType">
+                <a slot="reference" :class="$style.title">
                   {{ item.sensorType }}
                 </a>
                 <div :class="$style.sensorContent">
                   <div :class="$style.top">
-                    <el-checkbox
-                      :value="isSelectAll(item.sensorList)"
-                      @change="v => selectAllSensor(v, item.sensorList)"
-                    >
+                    <el-checkbox :value="isSelectAll(item.sensorList)" @change="v => selectAllSensor(v, item.sensorList)">
                       全选
                     </el-checkbox>
                   </div>
                   <ul :class="$style.menu3">
-                    <li
-                      v-for="(val, i) in item.sensorList"
-                      :key="i"
-                    >
-                      <el-checkbox
-                        :value="isSelect(val.sensorId)"
-                        @change="v => selectSensor(v, val)"
-                      >
+                    <li v-for="(val, i) in item.sensorList" :key="i">
+                      <el-checkbox :value="isSelect(val.sensorId)" @change="v => selectSensor(v, val)">
                         ID_{{ val.sensorId }}
                       </el-checkbox>
                     </li>
@@ -100,42 +49,23 @@
               </el-popover>
             </li>
             <li :class="$style.btn">
-              <el-button
-                type="primary"
-                size="mini"
-                @click="saveSensor"
-              >
+              <el-button type="primary" size="mini" @click="saveSensor">
                 确定
               </el-button>
             </li>
           </ul>
-          <p
-            v-else
-            :class="$style.tip"
-          >
+          <p v-else :class="$style.tip">
             暂无传感器
           </p>
         </el-popover>
-        <li
-          v-if="curMenuItem.type < 3"
-          :class="$style.menuItem"
-          @click="addNode"
-        >
-          <i class="el-icon-circle-plus-outline" /> 新建节点
+        <li v-if="curMenuItem.type < 3" :class="$style.menuItem" @click="addNode">
+          <i class="el-icon-circle-plus-outline"></i> 新建节点
         </li>
-        <li
-          v-if="curMenuItem.type === 3"
-          :class="$style.menuItem"
-          @click="emptySensor"
-        >
-          <i class="el-icon-delete" /> 清空传感器
+        <li v-if="curMenuItem.type === 3" :class="$style.menuItem" @click="emptySensor">
+          <i class="el-icon-delete"></i> 清空传感器
         </li>
-        <li
-          v-if="[2, 3].includes(curMenuItem.type)"
-          :class="$style.menuItem"
-          @click="delNode"
-        >
-          <i class="el-icon-remove-outline" /> 删除节点
+        <li v-if="[2, 3].includes(curMenuItem.type)" :class="$style.menuItem" @click="delNode">
+          <i class="el-icon-remove-outline"></i> 删除节点
         </li>
       </ul>
     </transition>
@@ -482,11 +412,11 @@ export default {
                     'xlink:href',
                     d =>
                         [
-                            '/topologyIcon/stationBig.png',
-                            '/topologyIcon/access.png',
-                            '/topologyIcon/convergence.png',
-                            '/topologyIcon/sensorType.png',
-                            '/topologyIcon/sensor.png'
+                            `${this.PUBLICPATH}/topologyIcon/stationBig.png`,
+                            `${this.PUBLICPATH}/topologyIcon/access.png`,
+                            `${this.PUBLICPATH}/topologyIcon/convergence.png`,
+                            `${this.PUBLICPATH}/topologyIcon/sensorType.png`,
+                            `${this.PUBLICPATH}/topologyIcon/sensor.png`
                         ][d.depth]
                 )
                 .style('cursor', 'pointer')
