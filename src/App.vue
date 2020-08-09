@@ -1,11 +1,3 @@
-<!--
- * @Descripttion: 
- * @version: 
- * @Author: ZZF
- * @Date: 2020-06-08 15:31:51
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-06-08 18:26:43
--->
 <template>
     <Main></Main>
 </template>

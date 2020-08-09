@@ -1,18 +1,16 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: ZZF
- * @Date: 2020-06-08 15:31:51
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-06-09 09:38:41
- */
-
 import Vue from 'vue';
+import { Message } from 'element-ui';
 import VueRouter from 'vue-router';
 import routers from './router';
 import store from '../store/index'; // 导入vuex
+import { setCookie, getCookie } from '@/tools/storage'; // 导入vuex
 
 Vue.use(VueRouter);
+// 解决ElementUI导航栏中的vue-router在3.0版本以上重复点菜单报错问题
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err);
+};
 // 无须过滤，每个人都能访问的免费路由
 const freeRoutes = ['error-403', 'error-404', 'error-500', 'waitingOpenPage'];
 
@@ -72,22 +70,45 @@ const checkMenuPower = goRouteName => {
     }
 };
 
-export const router = new VueRouter(RouterConfig);
+// 增加登陆拦截，token校验
+const tokenCheck = (to, from, next) => {
+    if (process.env.NODE_ENV === 'production') {
+        // 判断是否登录
+        if (to.query.token) {
+            setCookie('TOKEN', to.query.token);
+        }
+        if (!getCookie('TOKEN')) {
+            Message.error('您的登录状态已过期，请重新登录！');
+            window.location = 'http://192.168.78.104:3001/login';
+            return;
+        } else {
+            next();
+        }
+    } else {
+        next();
+    }
+};
+const router = new VueRouter(RouterConfig);
+router.beforeEach((to, from, next) => {
+    // 无路由的页面敬请期待
+    // if (ifRoutExitFlag(to.name)) {
+    //     // 校验是否具有当前路由权限
+    //     if (checkMenuPower(to.name)) {
+    //         next();
+    //     } else {
+    //         next('/403');
+    //     }
+    // } else {
+    //     next('/waitingOpen/waitingOpenPage');
+    // }
 
-// router.beforeEach((to, from, next) => {
-//     // 无路由的页面敬请期待
-//     if (ifRoutExitFlag(to.name)) {
-//         // 校验是否具有当前路由权限
-//         if (checkMenuPower(to.name)) {
-//             next();
-//         } else {
-//             next('/403');
-//         }
-//     } else {
-//         next('/waitingOpen/waitingOpenPage');
-//     }
-// });
+    // TODO: 暂时不开启token认证
+    next();
+    // tokenCheck(to, from, next)
+});
 
-// router.afterEach(to => {
-//     window.scrollTo(0, 0);
-// });
+router.afterEach(to => {
+    window.scrollTo(0, 0);
+});
+
+export { router };

@@ -3,7 +3,7 @@
 </style>
 
 <template>
-    <el-dialog :class="$style.container" :visible.sync="visible" title="提示" width="400px">
+    <el-dialog :class="$style.container" :visible.sync="visible" :title="title" width="400px">
         <div :class="$style.msg">
             <i class="el-icon-warning" :class="$style.icon"></i>
             {{ message }}
@@ -20,6 +20,7 @@
 export default {
     data() {
         return {
+            title: '提示',
             visible: false,
             message: '',
             yes: () => {},

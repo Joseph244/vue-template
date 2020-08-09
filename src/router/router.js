@@ -1,12 +1,3 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: ZZF
- * @Date: 2020-06-08 16:17:56
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-06-09 14:26:42
- */
-
 import ContentArea from '@/views/layout/ContentArea.vue';
 
 export const appRouter = [
@@ -18,7 +9,10 @@ export const appRouter = [
         children: [
             {
                 path: 'dashboard',
-                hidden: true,
+                meta: {
+                    hidden: true, // hidden 配置表示是子页面，不会校验权限，也不会作为左侧菜单显示
+                    breadMenu: 'dashboard'
+                },
                 component: () => import('@/views/dashboard/index'),
                 name: 'dashboard',
                 icon: 'el-icon-s-home'
@@ -26,131 +20,119 @@ export const appRouter = [
         ]
     },
     {
-        path: '/taskManage',
-        name: 'taskManage',
-        title: '诊断任务管理',
+        path: '/networkManage',
+        name: 'networkManage',
+        title: '网络管理',
         icon: 'el-icon-s-marketing',
-        redirect: '/equDiagnose',
+        redirect: '/topology',
         component: ContentArea,
         children: [
             {
-                path: '/noEquDiagnose',
-                name: 'noEquDiagnose',
-                title: '无设备诊断',
+                path: '/topology',
+                name: 'topology',
+                title: '网络拓扑',
                 component: resolve => {
-                    require(['@/views/taskManage/noEquDiagnose.vue'], resolve);
+                    require(['@/views/networkManage/topology/index.vue'], resolve);
                 }
             },
             {
-                path: '/newEquDiagnose',
-                name: 'newEquDiagnose',
-                title: '新建设备诊断',
-                // hidden: true,
+                path: '/networkConfig',
+                name: 'networkConfig',
+                title: '网络配置',
                 component: resolve => {
-                    require(['@/views/taskManage/newEquDiagnose.vue'], resolve);
+                    require(['@/views/networkManage/networkConfig/index.vue'], resolve);
                 }
             },
             {
-                path: '/equDiagnose',
-                name: 'equDiagnose',
-                title: '设备诊断',
+                path: '/networkConfig/jrNodeMCB',
+                name: 'jrNodeMCB',
+                title: '-接入节点主控配置',
+                meta: {
+                    // hidden: true,   // hidden 配置表示是子页面，不会校验权限，也不会作为左侧菜单显示
+                    // breadMenu: 'networkConfig'
+                },
                 component: resolve => {
-                    require(['@/views/taskManage/equDiagnose.vue'], resolve);
+                    require(['@/views/networkManage/networkConfig/jrNodeMCB.vue'], resolve);
                 }
             },
             {
-                path: '/noEquDiagnoseDetail/:taskId',
-                name: 'noEquDiagnoseDetail',
-                title: '无设备诊断详情',
-                // hidden: true,
+                path: '/networkConfig/jrNodeDevice',
+                name: 'jrNodeDevice',
+                title: '-接入节点边缘配置',
+                meta: {
+                    // hidden: true,
+                    // breadMenu: 'networkConfig'
+                },
                 component: resolve => {
-                    require(['@/views/taskManage/noEquDiagnoseDetail.vue'], resolve);
+                    require(['@/views/networkManage/networkConfig/jrNodeDevice.vue'], resolve);
                 }
             },
             {
-                path: '/equDiagnoseDetail/:taskId',
-                name: 'equDiagnoseDetail',
-                title: '设备诊断详情',
-                // hidden: true,
+                path: '/networkConfig/hjNodeConfig',
+                name: 'hjNodeConfig',
+                title: '-汇聚节点配置',
+                meta: {
+                    // hidden: true,
+                    // breadMenu: 'networkConfig'
+                },
                 component: resolve => {
-                    require(['@/views/taskManage/equDiagnoseDetail.vue'], resolve);
-                }
-            }
-        ]
-    },
-    {
-        path: '/standingBook',
-        name: 'standingBook',
-        title: '诊断台账管理',
-        icon: 'el-icon-s-order',
-        redirect: '/defectStandingBook',
-        component: ContentArea,
-        children: [
-            {
-                path: '/defectStandingBook',
-                name: 'defectStandingBook',
-                title: '缺陷台账',
-                component: resolve => {
-                    require(['@/views/standingBook/defectStandingBook.vue'], resolve);
+                    require(['@/views/networkManage/networkConfig/hjNodeConfig.vue'], resolve);
                 }
             },
             {
-                path: '/equStandingBook',
-                name: 'equStandingBook',
-                title: '设备台账',
+                path: '/networkConfig/sensorsConfig',
+                name: 'sensorsConfig',
+                title: '-传感器批量配置',
+                meta: {
+                    // hidden: true,
+                    // breadMenu: 'networkConfig'
+                },
                 component: resolve => {
-                    require(['@/views/standingBook/equStandingBook.vue'], resolve);
+                    require(['@/views/networkManage/networkConfig/sensorsConfig.vue'], resolve);
                 }
             },
             {
-                path: '/defectDetail',
-                name: 'defectDetail',
-                title: '缺陷详情',
-                // hidden: true,
+                path: '/activeFinding',
+                name: 'activeFinding',
+                title: '主动发现',
                 component: resolve => {
-                    require(['@/views/standingBook/defectDetail.vue'], resolve);
-                }
-            }
-        ]
-    },
-    {
-        path: '/systemSetting',
-        name: 'systemSetting',
-        title: '系统管理',
-        icon: 'el-icon-s-tools',
-        redirect: '/equUnit',
-        component: ContentArea,
-        children: [
-            {
-                path: '/equUnit',
-                name: 'equUnit',
-                title: '设备部件设置',
-                component: resolve => {
-                    require(['@/views/systemSetting/equUnit.vue'], resolve);
+                    require(['@/views/networkManage/activeFinding/index.vue'], resolve);
                 }
             },
             {
-                path: '/defectType',
-                name: 'defectType',
-                title: '缺陷类型设置',
+                path: '/activeFinding/jrNodeFinding',
+                name: 'jrNodeFinding',
+                title: '-接入节点发现',
+                meta: {
+                    // hidden: true,
+                    // breadMenu: 'activeFinding'
+                },
                 component: resolve => {
-                    require(['@/views/systemSetting/defectType.vue'], resolve);
+                    require(['@/views/networkManage/activeFinding/jrNodeFinding.vue'], resolve);
                 }
             },
             {
-                path: '/alertGrade',
-                name: 'alertGrade',
-                title: '严重等级设置',
+                path: '/activeFinding/hjNodeFinding',
+                name: 'hjNodeFinding',
+                title: '-汇聚节点发现',
+                meta: {
+                    // hidden: true,
+                    // breadMenu: 'activeFinding'
+                },
                 component: resolve => {
-                    require(['@/views/systemSetting/alertGrade.vue'], resolve);
+                    require(['@/views/networkManage/activeFinding/hjNodeFinding.vue'], resolve);
                 }
             },
             {
-                path: '/algorithm',
-                name: 'algorithm',
-                title: '算法接入',
+                path: '/activeFinding/sensorsFinding',
+                name: 'sensorsFinding',
+                title: '-传感器发现',
+                meta: {
+                    // hidden: true,
+                    // breadMenu: 'activeFinding'
+                },
                 component: resolve => {
-                    require(['@/views/systemSetting/algorithm.vue'], resolve);
+                    require(['@/views/networkManage/activeFinding/sensorsFinding.vue'], resolve);
                 }
             }
         ]

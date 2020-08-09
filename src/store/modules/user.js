@@ -1,11 +1,4 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: ZZF
- * @Date: 2020-06-09 11:30:59
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-06-09 11:51:25
- */
+import { getCookie } from '@/tools/storage';
 import routers from '@/router/router.js';
 
 /**
@@ -18,7 +11,7 @@ export function filterAsyncRoutes(routes) {
 
     routes.forEach(route => {
         const tmp = { ...route };
-        if (!tmp.hidden) {
+        if (!(tmp.meta && tmp.meta.hidden)) {
             if (tmp.children) {
                 tmp.children = filterAsyncRoutes(tmp.children);
             }
@@ -30,7 +23,8 @@ export function filterAsyncRoutes(routes) {
 }
 const userStore = {
     state: {
-        routes: []
+        routes: [],
+        token: getCookie('TOKEN')
     },
     mutations: {
         SET_ROUTES: (state, routes = routers) => {

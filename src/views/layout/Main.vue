@@ -3,26 +3,28 @@
         <Header></Header>
         <div :class="$style.container">
             <LeftMenu @changeRoute="changeRoute"></LeftMenu>
-            <ContentArea></ContentArea>
+            <router-view :key="key"></router-view>
         </div>
     </div>
 </template>
 <script>
 import Header from './Header.vue';
 import LeftMenu from './LeftMenu.vue';
-import ContentArea from './ContentArea.vue';
 export default {
     name: 'Main',
     components: {
         Header,
-        LeftMenu,
-        ContentArea
+        LeftMenu
     },
     mounted() {
         this.$store.commit('SET_ROUTES');
-        this.$store.dispatch('equDict');
+        // this.$store.dispatch('fileTemplatePath');
     },
-
+    computed: {
+        key() {
+            return this.$route.fullPath;
+        }
+    },
     methods: {
         changeRoute(params) {
             this.$router

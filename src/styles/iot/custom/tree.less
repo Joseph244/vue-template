@@ -1,0 +1,25 @@
+.el-tree {
+    background: transparent;
+
+    .el-tree-node__content {
+        &:hover {
+            background: transparent;
+        }
+        .el-tree-node__label {
+            color: #01d0c9;
+        }
+    }
+
+    .is-current > .el-tree-node__content,
+    .is-expanded > .el-tree-node__content {
+        background: transparent;
+    }
+
+    .is-current > .el-tree-node__content .el-tree-node__label {
+        color: #eebb31;
+    }
+
+    .el-tree-node__expand-icon:not(.is-leaf) {
+        color: #01d0c9;
+    }
+}

@@ -2,11 +2,13 @@
 .contentArea {
     position: relative;
     background: rgba(4, 62, 61, 0.3);
-    box-shadow: 0px 0px 10px #0be5de inset;
+    box-shadow: 0px 0px 14px #0ef7f7 inset;
+    border: 1px solid #02b1b1;
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
     position: relative;
+    padding: 10px;
 }
 </style>
 <template>

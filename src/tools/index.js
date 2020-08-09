@@ -53,7 +53,25 @@ const getQueryObject = url => {
     });
     return obj;
 };
+
+// 过滤对象属性得到非空key的值
+const filterNotNullObj = sourceObj => {
+    let targetObj = {};
+    let notNull = false; // 非空标志位
+    if (Object.prototype.toString.call(sourceObj) === '[object Object]') {
+        for (let key of Object.keys(sourceObj)) {
+            if (sourceObj[key]) {
+                targetObj[key] = sourceObj[key];
+                notNull = true;
+            }
+        }
+    }
+
+    return notNull && targetObj;
+};
+
 export default {
     dateFormat,
+    filterNotNullObj,
     getQueryObject
 };

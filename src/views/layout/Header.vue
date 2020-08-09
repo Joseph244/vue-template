@@ -36,7 +36,7 @@ export default {
                 mainTitle: '国家电网/国网江苏省电力有限公司电力科学研究院',
                 subTitle: 'STATE GRID/STATE GRID JIANGSU ELECTRIC POWER CO.,LTD RESEARCH INSTITUT'
             },
-            title: '局放智能诊断系统'
+            title: '网络统一管理平台'
         };
     },
     computed: {
