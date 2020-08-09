@@ -27,8 +27,8 @@ import api from '@/api/topology';
 export default {
     props: {
         stationId: {
-            type: String,
-            required: true
+            type: String
+            // required: true
         }
     },
     data() {

@@ -59,27 +59,6 @@
         "vue-cli-plugin-style-resources-loader": "^0.1.4",
         "vue-template-compiler": "^2.6.10"
     },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "eslint:recommended"
-        ],
-        "rules": {
-            "no-debugger": 2,
-            "generator-star-spacing": "off",
-            "no-tabs": "off",
-            "no-unused-vars": "off",
-            "no-console": "off",
-            "no-irregular-whitespace": "off"
-        },
-        "parserOptions": {
-            "parser": "babel-eslint"
-        }
-    },
     "postcss": {
         "plugins": {
             "autoprefixer": {}
