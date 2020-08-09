@@ -1,10 +1,10 @@
 <template>
-    <Main></Main>
+  <Main />
 </template>
 <script>
 import Main from './views/layout/Main';
 export default {
-    name: 'app',
+    name: 'App',
     components: {
         Main
     },

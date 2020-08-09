@@ -3,22 +3,37 @@
 </style>
 
 <template>
-    <div :class="$style.container">
-        <div :class="$style.top">
-            <el-breadcrumb separator-class="el-icon-arrow-right">
-                <el-breadcrumb-item>全网（江苏省）</el-breadcrumb-item>
-                <el-breadcrumb-item v-for="(item, index) in breadArray" :key="index">{{ item }}</el-breadcrumb-item>
-            </el-breadcrumb>
-        </div>
-
-        <div :class="$style.content">
-            <div :class="$style.topology">
-                <cityTopology @onSelect="cityTopologySelect" v-if="activeTopology === 1" ref="city" />
-                <stationTopology :stationId="curStationId" v-if="activeTopology === 2" />
-            </div>
-            <menuTree @onSelect="menuSelect" ref="menu" />
-        </div>
+  <div :class="$style.container">
+    <div :class="$style.top">
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item>全网（江苏省）</el-breadcrumb-item>
+        <el-breadcrumb-item
+          v-for="(item, index) in breadArray"
+          :key="index"
+        >
+          {{ item }}
+        </el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
+
+    <div :class="$style.content">
+      <div :class="$style.topology">
+        <cityTopology
+          v-if="activeTopology === 1"
+          ref="city"
+          @onSelect="cityTopologySelect"
+        />
+        <stationTopology
+          v-if="activeTopology === 2"
+          :station-id="curStationId"
+        />
+      </div>
+      <menuTree
+        ref="menu"
+        @onSelect="menuSelect"
+      />
+    </div>
+  </div>
 </template>
 
 <script>

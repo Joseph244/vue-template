@@ -1,11 +1,11 @@
 <template>
-    <div :class="$style.main">
-        <Header></Header>
-        <div :class="$style.container">
-            <LeftMenu @changeRoute="changeRoute"></LeftMenu>
-            <router-view :key="key"></router-view>
-        </div>
+  <div :class="$style.main">
+    <Header />
+    <div :class="$style.container">
+      <LeftMenu @changeRoute="changeRoute" />
+      <router-view :key="key" />
     </div>
+  </div>
 </template>
 <script>
 import Header from './Header.vue';
@@ -16,14 +16,14 @@ export default {
         Header,
         LeftMenu
     },
-    mounted() {
-        this.$store.commit('SET_ROUTES');
-        // this.$store.dispatch('fileTemplatePath');
-    },
     computed: {
         key() {
             return this.$route.fullPath;
         }
+    },
+    mounted() {
+        this.$store.commit('SET_ROUTES');
+        // this.$store.dispatch('fileTemplatePath');
     },
     methods: {
         changeRoute(params) {

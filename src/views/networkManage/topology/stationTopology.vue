@@ -13,15 +13,28 @@
 </style>
 
 <template>
-    <div :class="$style.container">
-        <reportTopology :stationId="stationId" v-if="activeTopology === 1" />
-        <customTopology :stationId="stationId" v-if="activeTopology === 2" />
+  <div :class="$style.container">
+    <reportTopology
+      v-if="activeTopology === 1"
+      :station-id="stationId"
+    />
+    <customTopology
+      v-if="activeTopology === 2"
+      :station-id="stationId"
+    />
 
-        <el-radio-group v-model="activeTopology" :class="$style.radio">
-            <el-radio :label="1">上报拓扑</el-radio>
-            <el-radio :label="2">手动拓扑</el-radio>
-        </el-radio-group>
-    </div>
+    <el-radio-group
+      v-model="activeTopology"
+      :class="$style.radio"
+    >
+      <el-radio :label="1">
+        上报拓扑
+      </el-radio>
+      <el-radio :label="2">
+        手动拓扑
+      </el-radio>
+    </el-radio-group>
+  </div>
 </template>
 
 <script>
@@ -29,13 +42,18 @@ import reportTopology from './reportTopology';
 import customTopology from './customTopology';
 
 export default {
-    components: { reportTopology, customTopology },
-    props: ['stationId'],
-    data() {
-        return {
-            activeTopology: 1
-        };
-    },
-    methods: {}
+  components: { reportTopology, customTopology },
+  props: {
+    stationId: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      activeTopology: 1
+    };
+  },
+  methods: {}
 };
 </script>

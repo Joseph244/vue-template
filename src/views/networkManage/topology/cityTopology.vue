@@ -3,16 +3,20 @@
 </style>
 
 <template>
-    <div :class="$style.container">
-        <div id="cityTopology" style="width: 100%; height: 100%" ref="con"></div>
-        <ul :class="$style.legend">
-            <li><img src="/topologyIcon/num1.png" /> 变电</li>
-            <li><img src="/topologyIcon/num1.png" /> 输电</li>
-            <li><i :class="$style.greenCircle" /> 在线</li>
-            <li><i :class="$style.greyCircle" /> 离线</li>
-            <li><i :class="$style.redCircle" /> 告警</li>
-        </ul>
-    </div>
+  <div :class="$style.container">
+    <div
+      id="cityTopology"
+      ref="con"
+      style="width: 100%; height: 100%"
+    />
+    <ul :class="$style.legend">
+      <li><img src="/topologyIcon/num1.png"> 变电</li>
+      <li><img src="/topologyIcon/num1.png"> 输电</li>
+      <li><i :class="$style.greenCircle" /> 在线</li>
+      <li><i :class="$style.greyCircle" /> 离线</li>
+      <li><i :class="$style.redCircle" /> 告警</li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -37,6 +41,45 @@ export default {
             links: [],
             lastOpen: null
         };
+    },
+    mounted() {
+        this.width = this.$refs['con'].offsetWidth;
+        this.height = this.$refs['con'].offsetHeight;
+        this.offsetX = this.width / 2;
+
+        this.tree = d3.layout
+            .tree()
+            .nodeSize(this.nodeSize)
+            // .size([this.width, this.height - 80])
+            .separation(function(a, b) {
+                return a.parent === b.parent ? 1 : 1;
+            })
+            .children(function(item) {
+                return item.children;
+            });
+
+        const zoom = d3.behavior
+            .zoom()
+            .scaleExtent([0.5, 1])
+            .on('zoom', () => {
+                const [x, y] = d3.event.translate;
+                this.translateX = x;
+                this.translateY = y;
+                this.scale = d3.event.scale;
+                this.svg.attr('transform', 'translate(' + (x + this.offsetX) + ',' + (y + 40) + ') scale(' + d3.event.scale + ')');
+            });
+
+        this.svg = d3
+            .select('#cityTopology')
+            .append('svg')
+            .attr('width', this.width)
+            .attr('height', this.height)
+            .call(zoom)
+            .append('g')
+            .attr('class', 'content')
+            .attr('transform', 'translate(' + this.offsetX + ', 40)');
+
+        this.drawTree();
     },
     methods: {
         drawTree(source) {
@@ -337,45 +380,6 @@ export default {
                 stationIdList: []
             });
         }
-    },
-    mounted() {
-        this.width = this.$refs['con'].offsetWidth;
-        this.height = this.$refs['con'].offsetHeight;
-        this.offsetX = this.width / 2;
-
-        this.tree = d3.layout
-            .tree()
-            .nodeSize(this.nodeSize)
-            // .size([this.width, this.height - 80])
-            .separation(function(a, b) {
-                return a.parent === b.parent ? 1 : 1;
-            })
-            .children(function(item) {
-                return item.children;
-            });
-
-        const zoom = d3.behavior
-            .zoom()
-            .scaleExtent([0.5, 1])
-            .on('zoom', () => {
-                const [x, y] = d3.event.translate;
-                this.translateX = x;
-                this.translateY = y;
-                this.scale = d3.event.scale;
-                this.svg.attr('transform', 'translate(' + (x + this.offsetX) + ',' + (y + 40) + ') scale(' + d3.event.scale + ')');
-            });
-
-        this.svg = d3
-            .select('#cityTopology')
-            .append('svg')
-            .attr('width', this.width)
-            .attr('height', this.height)
-            .call(zoom)
-            .append('g')
-            .attr('class', 'content')
-            .attr('transform', 'translate(' + this.offsetX + ', 40)');
-
-        this.drawTree();
     }
 };
 </script>

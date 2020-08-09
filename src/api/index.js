@@ -14,6 +14,8 @@ const axios = Axios.create({
 // 添加请求拦截器
 axios.interceptors.request.use(
     function(config) {
+        // 在这里做认证，可以从store里面获取token
+        // config.headers['Authorization'] = `Bearer ${store.getters.getAccessToken}`
         if (config.method.toLocaleLowerCase() === 'post' || config.method.toLocaleLowerCase() === 'put') {
             // 参数统一处理，请求都使用data传参
             config.data = config.data.data;

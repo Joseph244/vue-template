@@ -3,20 +3,20 @@
 </style>
 
 <template>
-    <div :class="$style.container">
-        <el-tree
-            v-if="show"
-            :data="treeData"
-            node-key="key"
-            :props="defaultProps"
-            :accordion="true"
-            :expand-on-click-node="false"
-            :default-expanded-keys="expandKeys"
-            :current-node-key="curSelected"
-            @node-click="handleNodeClick"
-            ref="tree"
-        ></el-tree>
-    </div>
+  <div :class="$style.container">
+    <el-tree
+      v-if="show"
+      ref="tree"
+      :data="treeData"
+      node-key="key"
+      :props="defaultProps"
+      :accordion="true"
+      :expand-on-click-node="false"
+      :default-expanded-keys="expandKeys"
+      :current-node-key="curSelected"
+      @node-click="handleNodeClick"
+    />
+  </div>
 </template>
 
 <script>
@@ -36,6 +36,10 @@ export default {
             },
             expandKeys: ['1']
         };
+    },
+    mounted() {
+        this.treeData = this.collapse([treeData]);
+        this.show = true;
     },
     methods: {
         handleNodeClick(data) {
@@ -78,10 +82,6 @@ export default {
                 stationIdList: []
             });
         }
-    },
-    mounted() {
-        this.treeData = this.collapse([treeData]);
-        this.show = true;
     }
 };
 </script>

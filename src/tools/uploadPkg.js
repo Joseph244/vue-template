@@ -23,6 +23,9 @@ function cumMd5(file) {
             }
         };
         fr.readAsArrayBuffer(file.slice(start, end));
+        fr.onerror = err => {
+            reject(err);
+        };
     });
 }
 
@@ -86,7 +89,7 @@ export default async function upload(file, fileItem, cb) {
             // const restTime = ((fileSize - end) / speed / 1000 / 60).toFixed(1); // 预计剩余时间
             // const progress = Number(((curPiece / totalPieces) * 100).toFixed(2)); // 上传进度
         } catch (error) {
-            console.log(error);
+            console.error(error);
             break;
         }
     }

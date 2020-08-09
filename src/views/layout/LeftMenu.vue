@@ -55,60 +55,71 @@
 }
 </style>
 <template>
-    <aside :class="$style.leftMenu">
-        <!-- {{ activeMenu }}
+  <aside :class="$style.leftMenu">
+    <!-- {{ activeMenu }}
         {{ activeParent }} -->
-        <div class="menuItem" v-for="item in menus" :key="item.name">
-            <nav :class="['first', activeParent === item.name ? 'activeParent' : '']" @click="gotoRoute(item)"><i :class="item.icon"></i>{{ item.title }}</nav>
-            <div :class="['second', activeMenu === child.name ? 'activeMenu' : '']" v-for="child in item.children" :key="child.name" @click="gotoRoute(child)">
-                <i v-if="activeMenu === child.name" class="el-icon-caret-right activeIcon"></i> {{ child.title }}
-            </div>
-        </div>
-    </aside>
+    <div
+      v-for="item in menus"
+      :key="item.name"
+      class="menuItem"
+    >
+      <nav
+        :class="['first', activeParent === item.name ? 'activeParent' : '']"
+        @click="gotoRoute(item)"
+      >
+        <i :class="item.icon" />{{ item.title }}
+      </nav>
+      <div
+        v-for="child in item.children"
+        :key="child.name"
+        :class="['second', activeMenu === child.name ? 'activeMenu' : '']"
+        @click="gotoRoute(child)"
+      >
+        <i
+          v-if="activeMenu === child.name"
+          class="el-icon-caret-right activeIcon"
+        /> {{ child.title }}
+      </div>
+    </div>
+  </aside>
 </template>
 <script>
 export default {
-    name: 'LeftMenu',
-    data() {
-        return {};
+  name: 'LeftMenu',
+  data() {
+    return {};
+  },
+  computed: {
+    menus() {
+      // console.log('menus', routers);
+      return this.$store.state.user.routes;
     },
-    computed: {
-        menus() {
-            // console.log('menus', routers);
-            return this.$store.state.user.routes;
-        },
-        activeMenu() {
-            const route = this.$route;
-            const { name } = route;
-            return name;
-        },
-        activeParent() {
-            const matchedRoutes = this.$route.matched;
-            const res = matchedRoutes.filter(x => {
-                return this.$route.name === x.name;
-            });
-            return res[0] ? res[0].parent.name : this.$route.name;
-        }
+    activeMenu() {
+      const route = this.$route;
+      const { name } = route;
+      return name;
     },
-    watch: {
-        $route: {
-            handler: function(route) {},
-            immediate: true
-        }
-    },
-    methods: {
-        gotoRoute(item) {
-            // 有redirect就重定向到对应菜单
-            const { redirect, path } = item;
-            if (redirect) {
-                this.$router.push(redirect);
-                return;
-            }
-            this.$router.push(path);
-        }
-    },
-    created() {
-        // console.error(window.location.href);
+    activeParent() {
+      const matchedRoutes = this.$route.matched;
+      const res = matchedRoutes.filter(x => {
+        return this.$route.name === x.name;
+      });
+      return res[0] ? res[0].parent.name : this.$route.name;
     }
+  },
+  created() {
+    // console.error(window.location.href);
+  },
+  methods: {
+    gotoRoute(item) {
+      // 有redirect就重定向到对应菜单
+      const { redirect, path } = item;
+      if (redirect) {
+        this.$router.push(redirect);
+        return;
+      }
+      this.$router.push(path);
+    }
+  }
 };
 </script>

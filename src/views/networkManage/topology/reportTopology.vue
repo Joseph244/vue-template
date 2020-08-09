@@ -3,17 +3,21 @@
 </style>
 
 <template>
-    <div :class="$style.container">
-        <div id="stationTopology" style="width: 100%; height: 100%" ref="con"></div>
-        <ul :class="$style.legend">
-            <li><img src="/topologyIcon/num3.png" /> 接入节点</li>
-            <li><img src="/topologyIcon/num4.png" /> 汇聚节点</li>
-            <li><img src="/topologyIcon/num5.png" /> 传感器</li>
-            <li><i :class="$style.greenCircle" /> 在线</li>
-            <li><i :class="$style.greyCircle" /> 离线</li>
-            <li><i :class="$style.redCircle" /> 告警</li>
-        </ul>
-    </div>
+  <div :class="$style.container">
+    <div
+      id="stationTopology"
+      ref="con"
+      style="width: 100%; height: 100%"
+    />
+    <ul :class="$style.legend">
+      <li><img src="/topologyIcon/num3.png"> 接入节点</li>
+      <li><img src="/topologyIcon/num4.png"> 汇聚节点</li>
+      <li><img src="/topologyIcon/num5.png"> 传感器</li>
+      <li><i :class="$style.greenCircle" /> 在线</li>
+      <li><i :class="$style.greyCircle" /> 离线</li>
+      <li><i :class="$style.redCircle" /> 告警</li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -21,7 +25,12 @@ import stationData from './stationData';
 import api from '@/api/topology';
 
 export default {
-    props: ['stationId'],
+    props: {
+        stationId: {
+            type: String,
+            required: true
+        }
+    },
     data() {
         return {
             // svg参数
@@ -34,6 +43,42 @@ export default {
             nodes: [],
             links: []
         };
+    },
+    mounted() {
+        this.width = this.$refs['con'].offsetWidth;
+        this.height = this.$refs['con'].offsetHeight;
+        this.offsetX = this.width / 2;
+
+        this.tree = d3.layout
+            .tree()
+            .nodeSize(this.nodeSize)
+            // .size([this.width, this.height - 80])
+            .separation(function(a, b) {
+                return a.parent === b.parent ? 1 : 1;
+            })
+            .children(function(item) {
+                return item.children;
+            });
+
+        const zoom = d3.behavior
+            .zoom()
+            .scaleExtent([0.5, 1])
+            .on('zoom', () => {
+                const [x, y] = d3.event.translate;
+                this.svg.attr('transform', 'translate(' + (x + this.offsetX) + ',' + (y + 40) + ') scale(' + d3.event.scale + ')');
+            });
+
+        this.svg = d3
+            .select('#stationTopology')
+            .append('svg')
+            .attr('width', this.width)
+            .attr('height', this.height)
+            .call(zoom)
+            .append('g')
+            .attr('class', 'content')
+            .attr('transform', 'translate(' + this.offsetX + ', 40)');
+
+        this.drawTree();
     },
     methods: {
         drawTree(source) {
@@ -317,7 +362,7 @@ export default {
                 .enter()
                 .append('path')
                 .attr('class', 'link')
-                .attr('d', d => {
+                .attr('d', () => {
                     const sourceX = source.x0;
                     const sourceY = source.y0 + 40;
                     const targetX = source.x0;
@@ -343,7 +388,7 @@ export default {
                 .exit()
                 .transition()
                 .duration(800)
-                .attr('d', d => {
+                .attr('d', () => {
                     const sourceX = source.x;
                     const sourceY = source.y + 40;
                     const targetX = source.x;
@@ -353,44 +398,8 @@ export default {
                 .remove();
         },
         async getTreeData() {
-            const res = await api.getStationTree({ stationId: this.stationId });
+            await api.getStationTree({ stationId: this.stationId });
         }
-    },
-    mounted() {
-        this.width = this.$refs['con'].offsetWidth;
-        this.height = this.$refs['con'].offsetHeight;
-        this.offsetX = this.width / 2;
-
-        this.tree = d3.layout
-            .tree()
-            .nodeSize(this.nodeSize)
-            // .size([this.width, this.height - 80])
-            .separation(function(a, b) {
-                return a.parent === b.parent ? 1 : 1;
-            })
-            .children(function(item) {
-                return item.children;
-            });
-
-        const zoom = d3.behavior
-            .zoom()
-            .scaleExtent([0.5, 1])
-            .on('zoom', () => {
-                const [x, y] = d3.event.translate;
-                this.svg.attr('transform', 'translate(' + (x + this.offsetX) + ',' + (y + 40) + ') scale(' + d3.event.scale + ')');
-            });
-
-        this.svg = d3
-            .select('#stationTopology')
-            .append('svg')
-            .attr('width', this.width)
-            .attr('height', this.height)
-            .call(zoom)
-            .append('g')
-            .attr('class', 'content')
-            .attr('transform', 'translate(' + this.offsetX + ', 40)');
-
-        this.drawTree();
     }
 };
 </script>

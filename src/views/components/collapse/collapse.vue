@@ -3,19 +3,31 @@
 </style>
 
 <template>
-    <div :class="$style.container">
-        <div :class="$style.title" :style="titleStyle || ''">
-            <h2>{{ title }}</h2>
-            <a :class="$style.icon" @click="showChange">
-                <Icon :class="`${isOpen ? $style.up : $style.down}`" type="ios-arrow-up" />
-            </a>
-        </div>
-        <transUpDown>
-            <div :class="$style.content" v-show="isOpen">
-                <slot></slot>
-            </div>
-        </transUpDown>
+  <div :class="$style.container">
+    <div
+      :class="$style.title"
+      :style="titleStyle || ''"
+    >
+      <h2>{{ title }}</h2>
+      <a
+        :class="$style.icon"
+        @click="showChange"
+      >
+        <Icon
+          :class="`${isOpen ? $style.up : $style.down}`"
+          type="ios-arrow-up"
+        />
+      </a>
     </div>
+    <transUpDown>
+      <div
+        v-show="isOpen"
+        :class="$style.content"
+      >
+        <slot />
+      </div>
+    </transUpDown>
+  </div>
 </template>
 
 <script>
@@ -23,7 +35,16 @@ import transUpDown from './transUpDown';
 
 export default {
     components: { transUpDown },
-    props: ['title', 'titleStyle'],
+    props: {
+        title: {
+            type: String,
+            default: ''
+        },
+        titleStyle: {
+            type: String,
+            default: ''
+        }
+    },
     data() {
         return {
             isOpen: true

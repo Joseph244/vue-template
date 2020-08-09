@@ -51,17 +51,22 @@
 }
 </style>
 <template>
-    <dl :class="$style.tabs">
-        <dt><slot></slot></dt>
-        <dd v-for="(item, index) in tabConfig" :key="index" :class="curTabIndex === index ? $style.active : ''" @click="tabChange(index)">
-            <span>{{ item.label }}</span>
-            <i></i>
-        </dd>
-    </dl>
+  <dl :class="$style.tabs">
+    <dt><slot /></dt>
+    <dd
+      v-for="(item, index) in tabConfig"
+      :key="index"
+      :class="curTabIndex === index ? $style.active : ''"
+      @click="tabChange(index)"
+    >
+      <span>{{ item.label }}</span>
+      <i />
+    </dd>
+  </dl>
 </template>
 <script>
 export default {
-    name: 'tabs',
+    name: 'Tabs',
     props: {
         tabConfig: {
             type: Array,
@@ -92,12 +97,12 @@ export default {
     mounted() {
         this.tabChange(0);
     },
+    created() {},
     methods: {
         tabChange(index) {
             this.curTabIndex = index;
             this.$emit('change', this.tabConfig[index]);
         }
-    },
-    created() {}
+    }
 };
 </script>

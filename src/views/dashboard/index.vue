@@ -3,17 +3,23 @@
 }
 </style>
 <template>
-    <div :class="$style.firstPage">
-        <div id="model1" style="border:1px solid red; width:900px;height:700px;"></div>
-        <div id="WebGL-output" style="border:1px solid red; width:900px;height:700px;"></div>
-    </div>
+  <div :class="$style.firstPage">
+    <div
+      id="model1"
+      style="border:1px solid red; width:900px;height:700px;"
+    />
+    <div
+      id="WebGL-output"
+      style="border:1px solid red; width:900px;height:700px;"
+    />
+  </div>
 </template>
 <script>
 import * as THREE from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 // import {} from '@/api'
 export default {
-    name: 'firstPage',
+    name: 'FirstPage',
     data() {
         return {
             scene: null,
@@ -23,6 +29,10 @@ export default {
     },
     computed: {},
     watch: {},
+    mounted() {
+        this.test2();
+        // this.$refs.Model1.append(this.Wave.renderer.domElement);
+    },
     methods: {
         test(domId = 'WebGL-output') {
             // 创建一个场景（场景是一个容器，用于保存、跟踪所要渲染的物体和使用的光源）
@@ -48,7 +58,6 @@ export default {
             var loader = new FBXLoader();
             let that = this;
             loader.load('/3dModels/wave.fbx', object => {
-                debugger;
                 that.scene.add(object);
                 that.animate();
                 // 渲染场景
@@ -135,10 +144,6 @@ export default {
 
             requestAnimationFrame(this.animate);
         }
-    },
-    mounted() {
-        this.test2();
-        // this.$refs.Model1.append(this.Wave.renderer.domElement);
     }
 };
 </script>

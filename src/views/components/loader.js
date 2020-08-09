@@ -14,13 +14,13 @@ export function ComponentsLoader(Vue) {
         arg3 - 匹配文件名的正则
 */
     const requireComponent = require.context('.', false, /\.vue$/);
-    console.log('requireComponent.keys():', requireComponent.keys()); // 打印加载到的文件名称
+    // console.info('requireComponent.keys():', requireComponent.keys()); // 打印加载到的文件名称
     requireComponent.keys().forEach(fileName => {
         const config = requireComponent(fileName); // 加载组件
         const componentName = changeStr(
             fileName.replace(/^\.\//, '').replace(/\.\w+$/, '') // ./child1.vue => Child1
         );
-        console.log('componentName:', componentName);
+        // console.info('componentName:', componentName);
         Vue.component(componentName, config.default || config); // 动态注册该目录下的所有.vue文件
     });
 }

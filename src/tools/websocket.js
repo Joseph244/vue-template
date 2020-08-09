@@ -23,10 +23,10 @@ let reconnectTimeout = null;
 let connectWebsocket = callback => {
     // 连接websocket
     mysocket = new WebSocket(websocketUrl, 'echo-protocol');
-    console.log(mysocket);
+    console.info(mysocket);
     mysocket.onopen = () => {
         clearTimeout(reconnectTimeout); // 取消重连setTimeout
-        console.log('Your WebSocket connecting succeed!');
+        console.info('Your WebSocket connecting succeed!');
         // 初始化发送信息
         mysocket.send(
             JSON.stringify({
@@ -37,7 +37,7 @@ let connectWebsocket = callback => {
         // 接收消息
         mysocket.onmessage = msg => {
             let socketContent = JSON.parse(msg.data);
-            console.log('receiveData', socketContent);
+            console.info('receiveData', socketContent);
             // 判断事件名称，并告诉前端刷新接口数据
             if (socketContent.eventName && socketEventMap.has(socketContent.eventName)) {
                 myBus.$emit(socketContent.eventName, socketContent);
@@ -48,7 +48,7 @@ let connectWebsocket = callback => {
         console.error('Something went wrong with your WebSocket!');
     };
     mysocket.onclose = () => {
-        console.log('Your WebSocket was close!');
+        console.info('Your WebSocket was close!');
         // socket断线重连(2s连接一次)
         reconnectTimeout = setTimeout(() => {
             connectWebsocket(callback);

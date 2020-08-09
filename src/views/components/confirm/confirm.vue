@@ -3,17 +3,39 @@
 </style>
 
 <template>
-    <el-dialog :class="$style.container" :visible.sync="visible" :title="title" width="400px">
-        <div :class="$style.msg">
-            <i class="el-icon-warning" :class="$style.icon"></i>
-            {{ message }}
-        </div>
+  <el-dialog
+    :class="$style.container"
+    :visible.sync="visible"
+    :title="title"
+    width="400px"
+  >
+    <div :class="$style.msg">
+      <i
+        class="el-icon-warning"
+        :class="$style.icon"
+      />
+      {{ message }}
+    </div>
 
-        <div slot="footer" :class="$style.btns">
-            <el-button type="primary" @click="cancel">取消</el-button>
-            <el-button type="primary" plain @click="submit">确认</el-button>
-        </div>
-    </el-dialog>
+    <div
+      slot="footer"
+      :class="$style.btns"
+    >
+      <el-button
+        type="primary"
+        @click="cancel"
+      >
+        取消
+      </el-button>
+      <el-button
+        type="primary"
+        plain
+        @click="submit"
+      >
+        确认
+      </el-button>
+    </div>
+  </el-dialog>
 </template>
 
 <script>
@@ -27,6 +49,16 @@ export default {
             no: () => true
         };
     },
+    watch: {
+        visible(val) {
+            if (!val) {
+                setTimeout(() => {
+                    this.$destroy(true);
+                    this.$el.parentNode.removeChild(this.$el); // 从DOM里将这个组件移除
+                }, 500);
+            }
+        }
+    },
     methods: {
         submit() {
             this.yes();
@@ -38,16 +70,6 @@ export default {
         },
         close() {
             this.visible = false;
-        }
-    },
-    watch: {
-        visible(val) {
-            if (!val) {
-                setTimeout(() => {
-                    this.$destroy(true);
-                    this.$el.parentNode.removeChild(this.$el); // 从DOM里将这个组件移除
-                }, 500);
-            }
         }
     }
 };

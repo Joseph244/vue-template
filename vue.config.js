@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
-const SentryPlugin = require('@sentry/webpack-plugin');
+// const SentryPlugin = require('@sentry/webpack-plugin');
 process.env.VUE_APP_VERSION = require('./package.json').version;
 const isProd = process.env.NODE_ENV === 'production';
 
