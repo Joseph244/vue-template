@@ -89,7 +89,20 @@
 import animations from 'create-keyframe-animation';
 export default {
     name: 'SensorCard',
-    props: ['sensorId', 'index', 'sensorInfo'],
+    props: {
+        sensorId: {
+            type: String,
+            required: true
+        },
+        index: {
+            type: Number,
+            required: true
+        },
+        sensorInfo: {
+            type: Object,
+            required: true
+        }
+    },
     data() {
         return {
             transFlag: false,

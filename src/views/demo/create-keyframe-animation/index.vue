@@ -33,7 +33,7 @@
             }"
             :index="index"
             :sensor-info="sensor"
-        />
+                />
     </div>
 </template>
 <script>
