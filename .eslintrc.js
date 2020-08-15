@@ -26,6 +26,17 @@ module.exports = {
                 }
             }
         ],
+        'vue/html-indent': [
+            'error',
+            4,
+            {
+                attribute: 1,
+                baseIndent: 1,
+                closeBracket: 2,
+                alignAttributesVertically: false,
+                ignores: []
+            }
+        ],
         'vue/html-closing-bracket-spacing': [
             'error',
             {

@@ -34,18 +34,19 @@ module.exports = {
                 'window.Quill': 'quill'
             }
         ]);
-        // if (process.env.NODE_ENV === 'production') {
-        //     config.plugin('sentry').use(SentryPlugin, [
-        //         {
-        //             ignore: ['node_modules'],
-        //             include: './dist/js', //上传dist文件的js
-        //             configFile: './.sentryclirc', //配置文件地址
-        //             release: process.env.VUE_APP_VERSION, //版本号
-        //             deleteAfterCompile: true,
-        //             urlPrefix: 'http://192.168.78.104:3001/partialdischargesystem/' //线上 js的代码路径前缀
-        //         }
-        //     ]);
-        // }
+        if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_SENTRY) {
+            console.info('开启sentry监控...  ...');
+            config.plugin('sentry').use(SentryPlugin, [
+                {
+                    ignore: ['node_modules'],
+                    include: './dist/js', //上传dist文件的js
+                    configFile: './.sentryclirc', //配置文件地址
+                    release: process.env.VUE_APP_VERSION, //版本号
+                    deleteAfterCompile: true,
+                    urlPrefix: process.env.VUE_APP_SENTRY //线上 js的代码路径前缀
+                }
+            ]);
+        }
     },
     configureWebpack: config => {
         if (isProd) {

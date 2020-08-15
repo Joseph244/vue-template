@@ -1,3 +1,8 @@
+/**
+ * 此处为前端配置文件，可在打包部署之后进行修改；
+ * 访问方式为，在js中直接获取window.WENV.BIGTITLE即可
+ * */
+
 window.WENV = (function() {
     return {
         REFRESH: {

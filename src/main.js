@@ -1,5 +1,6 @@
 import Vue from 'vue';
-
+import * as Sentry from '@sentry/browser';
+import { Vue as VueIntegration } from '@sentry/integrations';
 import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
 // import './styles/blueWhite/index.css';
@@ -16,26 +17,14 @@ import 'font-awesome/css/font-awesome.min.css';
 import echarts from 'echarts';
 import 'echarts-gl';
 
-import Bus from '@/tools/bus.js';
-import Global from './global.js';
-import websocket from '../src/tools/websocket.js';
+import Bus from '@/tools/bus.js'; // 全局bus消息总线
+import Global from './global.js'; // 应用内定制全局变量，组件内无需定义可直接this方式访问
+import websocket from '../src/tools/websocket.js'; // websocket
 import directives from './plugins/directives/index'; // 全局指令注册
 import tools from './tools/index';
 import { ComponentsLoader } from './views/components/loader';
 // 自定义render组件
 import confirm from './views/components/confirm';
-// sentry监控
-// 可以自定义插件实现手动上报错误
-// import Raven from 'raven-js';
-// import RavenVue from 'raven-js/plugins/vue';
-// Raven.config('http://1a1eb95605f64dd9b11905c691272f36@192.168.78.247:9000/2', {
-//     release: process.env.VUE_APP_VERSION //版本号与vue.config.js的一致
-// })
-//     .addPlugin(RavenVue, Vue)
-//     .install();
-
-import * as Sentry from '@sentry/browser';
-import { Vue as VueIntegration } from '@sentry/integrations';
 
 Vue.prototype.$tools = tools;
 Vue.prototype.$websocket = websocket;
@@ -44,17 +33,12 @@ Vue.config.productionTip = false;
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$myConfirm = confirm;
 
-// 全局mixin，public下面的静态资源要使用`${PUBLICPATH}/xxx.png`方式引用
-// Vue.mixin({
-//     computed: {
-//
-//     }
-// });
 Vue.use(Global);
 Vue.use(ComponentsLoader);
 Vue.use(ElementUI, { size: 'small', zIndex: 100000 });
 Vue.use(directives);
-if (process.env.NODE_ENV === 'production') {
+
+if (process.env.NODE_ENV === 'production' && process.env.VUE_APP_SENTRY) {
     Sentry.init({
         dsn: 'http://a19d20667d3740c3843275074526d9bc@192.168.78.247:9000/5',
         integrations: [new VueIntegration({ Vue, attachProps: true })],
