@@ -13,14 +13,14 @@
 }
 </style>
 <template>
-  <div :class="$style.miniBreadcrumb">
-    <span
-      v-for="(item, index) in data"
-      :key="index"
-    >
-      {{ item.label }}
-    </span>
-  </div>
+    <div :class="$style.miniBreadcrumb">
+        <span
+            v-for="(item, index) in data"
+            :key="index"
+                >
+            {{ item.label }}
+        </span>
+    </div>
 </template>
 <script>
 export default {

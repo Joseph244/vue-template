@@ -7,52 +7,52 @@
 }
 </style>
 <template>
-  <div :class="$style.UploadParseExcel">
-    <el-upload
-      action=""
-      :multiple="false"
-      :show-file-list="false"
-      accept="csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-      :http-request="httpRequest"
-    >
-      <slot></slot>
-      <!-- <el-button size="small" type="primary">上传</el-button> -->
-    </el-upload>
-    <el-dialog
-      :visible.sync="show"
-      title="excel数据内容"
-      :close-on-click-modal="false"
-      @on-cancel="cancel()"
-    >
-      <h4><i class="el-icon-warning"></i> 字段缺失或填写错误的数据会自动过滤</h4>
-      <el-table
-        :data="tableData"
-        border
-        style="width: 100%;"
-      >
-        <el-table-column
-          v-for="item in columns"
-          :key="item"
-          :prop="item"
-          :label="item"
-        />
-      </el-table>
-      <div
-        slot="footer"
-        class="dialog-footer"
-      >
-        <el-button @click="cancel">
-          取 消
-        </el-button>
-        <el-button
-          type="primary"
-          @click="confirm"
-        >
-          确 定
-        </el-button>
-      </div>
-    </el-dialog>
-  </div>
+    <div :class="$style.UploadParseExcel">
+        <el-upload
+            action=""
+            :multiple="false"
+            :show-file-list="false"
+            accept="csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            :http-request="httpRequest"
+                >
+            <slot></slot>
+            <!-- <el-button size="small" type="primary">上传</el-button> -->
+        </el-upload>
+        <el-dialog
+            :visible.sync="show"
+            title="excel数据内容"
+            :close-on-click-modal="false"
+            @on-cancel="cancel()"
+                >
+            <h4><i class="el-icon-warning"></i> 字段缺失或填写错误的数据会自动过滤</h4>
+            <el-table
+                :data="tableData"
+                border
+                style="width: 100%;"
+                    >
+                <el-table-column
+                    v-for="item in columns"
+                    :key="item"
+                    :prop="item"
+                    :label="item"
+                        />
+            </el-table>
+            <div
+                slot="footer"
+                class="dialog-footer"
+                    >
+                <el-button @click="cancel">
+                    取 消
+                </el-button>
+                <el-button
+                    type="primary"
+                    @click="confirm"
+                        >
+                    确 定
+                </el-button>
+            </div>
+        </el-dialog>
+    </div>
 </template>
 <script>
 import XLSX from 'xlsx';

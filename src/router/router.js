@@ -32,7 +32,7 @@ export const appRouter = [
                 name: 'css3Animation',
                 title: 'css3固定动画',
                 component: resolve => {
-                    require(['@/views/demo/css3Animation.vue'], resolve);
+                    require(['@/views/demo/css3Animation/index.vue'], resolve);
                 }
             },
             {
@@ -40,7 +40,7 @@ export const appRouter = [
                 name: 'create-keyframe-animation',
                 title: 'keyframe灵活动画',
                 component: resolve => {
-                    require(['@/views/demo/create-keyframe-animation.vue'], resolve);
+                    require(['@/views/demo/create-keyframe-animation/index.vue'], resolve);
                 }
             }
         ]

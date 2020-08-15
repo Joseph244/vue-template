@@ -16,12 +16,12 @@
 }
 </style>
 <template>
-  <div
-    :class="$style.backIcon"
-    @click="routeBack"
-  >
-    返回<img src="../../images/backIcon.png" />
-  </div>
+    <div
+        :class="$style.backIcon"
+        @click="routeBack"
+            >
+        返回<img src="../../images/backIcon.png" />
+    </div>
 </template>
 <script>
 export default {

@@ -3,29 +3,29 @@
 </style>
 
 <template>
-  <div :class="$style.container">
-    <div id="stationTopology" ref="con" style="width: 100%; height: 100%"></div>
-    <ul :class="$style.legend">
-      <li>
-        <img :src="`./topologyIcon/num3.png`" /> 接入节点
-      </li>
-      <li>
-        <img :src="`./topologyIcon/4mnu.png`" /> 汇聚节点
-      </li>
-      <li>
-        <img :src="`./topologyIcon/5mnu.png`" /> 传感器
-      </li>
-      <li>
-        <i :class="$style.greenCircle"></i> 在线
-      </li>
-      <li>
-        <i :class="$style.greyCircle"></i> 离线
-      </li>
-      <li>
-        <i :class="$style.redCircle"></i> 告警
-      </li>
-    </ul>
-  </div>
+    <div :class="$style.container">
+        <div id="stationTopology" ref="con" style="width: 100%; height: 100%"></div>
+        <ul :class="$style.legend">
+            <li>
+                <img :src="`./topologyIcon/num3.png`" /> 接入节点
+            </li>
+            <li>
+                <img :src="`./topologyIcon/4mnu.png`" /> 汇聚节点
+            </li>
+            <li>
+                <img :src="`./topologyIcon/5mnu.png`" /> 传感器
+            </li>
+            <li>
+                <i :class="$style.greenCircle"></i> 在线
+            </li>
+            <li>
+                <i :class="$style.greyCircle"></i> 离线
+            </li>
+            <li>
+                <i :class="$style.redCircle"></i> 告警
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>

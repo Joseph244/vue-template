@@ -3,26 +3,26 @@
 </style>
 
 <template>
-  <div :class="$style.container">
-    <div id="cityTopology" ref="con" style="width: 100%; height: 100%"></div>
-    <ul :class="$style.legend">
-      <li>
-        <img :src="'./topologyIcon/num1.png'" /> 变电
-      </li>
-      <li>
-        <img :src="`./topologyIcon/num1.png`" /> 输电
-      </li>
-      <li>
-        <i :class="$style.greenCircle"></i> 在线
-      </li>
-      <li>
-        <i :class="$style.greyCircle"></i> 离线
-      </li>
-      <li>
-        <i :class="$style.redCircle"></i> 告警
-      </li>
-    </ul>
-  </div>
+    <div :class="$style.container">
+        <div id="cityTopology" ref="con" style="width: 100%; height: 100%"></div>
+        <ul :class="$style.legend">
+            <li>
+                <img :src="'./topologyIcon/num1.png'" /> 变电
+            </li>
+            <li>
+                <img :src="`./topologyIcon/num1.png`" /> 输电
+            </li>
+            <li>
+                <i :class="$style.greenCircle"></i> 在线
+            </li>
+            <li>
+                <i :class="$style.greyCircle"></i> 离线
+            </li>
+            <li>
+                <i :class="$style.redCircle"></i> 告警
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>

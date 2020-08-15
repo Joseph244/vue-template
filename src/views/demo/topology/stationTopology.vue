@@ -13,28 +13,28 @@
 </style>
 
 <template>
-  <div :class="$style.container">
-    <reportTopology
-      v-if="activeTopology === 1"
-      :station-id="stationId"
-    />
-    <customTopology
-      v-if="activeTopology === 2"
-      :station-id="stationId"
-    />
+    <div :class="$style.container">
+        <reportTopology
+            v-if="activeTopology === 1"
+            :station-id="stationId"
+                />
+        <customTopology
+            v-if="activeTopology === 2"
+            :station-id="stationId"
+                />
 
-    <el-radio-group
-      v-model="activeTopology"
-      :class="$style.radio"
-    >
-      <el-radio :label="1">
-        上报拓扑
-      </el-radio>
-      <el-radio :label="2">
-        手动拓扑
-      </el-radio>
-    </el-radio-group>
-  </div>
+        <el-radio-group
+            v-model="activeTopology"
+            :class="$style.radio"
+                >
+            <el-radio :label="1">
+                上报拓扑
+            </el-radio>
+            <el-radio :label="2">
+                手动拓扑
+            </el-radio>
+        </el-radio-group>
+    </div>
 </template>
 
 <script>

@@ -3,20 +3,20 @@
 </style>
 
 <template>
-  <div :class="$style.container">
-    <el-tree
-      v-if="show"
-      ref="tree"
-      :data="treeData"
-      node-key="key"
-      :props="defaultProps"
-      :accordion="true"
-      :expand-on-click-node="false"
-      :default-expanded-keys="expandKeys"
-      :current-node-key="curSelected"
-      @node-click="handleNodeClick"
-    />
-  </div>
+    <div :class="$style.container">
+        <el-tree
+            v-if="show"
+            ref="tree"
+            :data="treeData"
+            node-key="key"
+            :props="defaultProps"
+            :accordion="true"
+            :expand-on-click-node="false"
+            :default-expanded-keys="expandKeys"
+            :current-node-key="curSelected"
+            @node-click="handleNodeClick"
+                />
+    </div>
 </template>
 
 <script>

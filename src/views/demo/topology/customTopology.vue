@@ -23,7 +23,9 @@
         <transition name="el-fade-in-linear">
             <ul v-show="menuVisible" id="menu" :class="$style.menu">
                 <el-popover v-if="curMenuItem.type === 3" v-model="sensorTypeMenuVisible" trigger="click" placement="right-start" @hide="hideSensorMenu">
-                    <li slot="reference" :class="$style.menuItem"><i class="el-icon-connection"></i> 挂载传感器</li>
+                    <li slot="reference" :class="$style.menuItem">
+                        <i class="el-icon-connection"></i> 挂载传感器
+                    </li>
                     <ul v-if="getSensorMenu().length > 0" :class="$style.menu2">
                         <li v-for="(item, index) in getSensorMenu()" :key="index">
                             <el-popover :value="curShowSensorType === item.sensorType" placement="right-start" @show="curShowSensorType = item.sensorType">
@@ -54,9 +56,15 @@
                         暂无传感器
                     </p>
                 </el-popover>
-                <li v-if="curMenuItem.type < 3" :class="$style.menuItem" @click="addNode"><i class="el-icon-circle-plus-outline"></i> 新建节点</li>
-                <li v-if="curMenuItem.type === 3" :class="$style.menuItem" @click="emptySensor"><i class="el-icon-delete"></i> 清空传感器</li>
-                <li v-if="[2, 3].includes(curMenuItem.type)" :class="$style.menuItem" @click="delNode"><i class="el-icon-remove-outline"></i> 删除节点</li>
+                <li v-if="curMenuItem.type < 3" :class="$style.menuItem" @click="addNode">
+                    <i class="el-icon-circle-plus-outline"></i> 新建节点
+                </li>
+                <li v-if="curMenuItem.type === 3" :class="$style.menuItem" @click="emptySensor">
+                    <i class="el-icon-delete"></i> 清空传感器
+                </li>
+                <li v-if="[2, 3].includes(curMenuItem.type)" :class="$style.menuItem" @click="delNode">
+                    <i class="el-icon-remove-outline"></i> 删除节点
+                </li>
             </ul>
         </transition>
     </div>
