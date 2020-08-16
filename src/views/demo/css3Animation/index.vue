@@ -65,7 +65,7 @@
 <template>
     <div ref="right1" :class="$style.right1">
         <div :class="$style.label">
-            <a>传感器类型<edgeBorder color="#00fff3"/></a>
+            <a>传感器类型<edgeBorder color="#00fff3" /></a>
         </div>
 
         <div :class="$style.wrap">

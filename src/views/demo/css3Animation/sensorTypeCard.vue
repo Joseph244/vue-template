@@ -71,19 +71,17 @@
                 :src="`./sensorTypeImg/${sensorInfo.sensorTypeName}.png`"
                 :alt="sensorInfo.sensorTypeName1"
                 onerror="this.src='../sensorTypeImg/烟感传感器.png'"
-            />
+                    />
         </div>
         <div :class="$style.right">
             <div>
-                <span :class="$style.num">{{ sensorInfo.onlineCount }}</span
-                ><span>个</span>
+                <span :class="$style.num">{{ sensorInfo.onlineCount }}</span><span>个</span>
             </div>
             <div :class="$style.name">
                 在线总数
             </div>
             <div>
-                <span :class="$style.num">{{ sensorInfo.offlineCount }}</span
-                ><span>个</span>
+                <span :class="$style.num">{{ sensorInfo.offlineCount }}</span><span>个</span>
             </div>
             <div :class="$style.name">
                 离线总数
