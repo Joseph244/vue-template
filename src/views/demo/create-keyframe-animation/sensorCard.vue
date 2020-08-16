@@ -26,7 +26,7 @@
                         :style="{
                             color: cardColor(details.physical.online)
                         }"
-                    >
+                            >
                         <div v-for="(run, index2) in details.runState" :key="index2" :class="$style.property">
                             <!-- :style="{ animation: details.runState.length <= 2 ? 'none' : '' }" -->
                             <div :class="$style.fun">
@@ -70,7 +70,7 @@
                         :class="$style.iconImg"
                         style="margin-bottom: -5px;"
                         src="../../../images/perceptiveInfo/offline.png"
-                    />
+                            />
                     <img v-show="details.physical.able != 0" v-else :class="$style.iconImg" src="../../../images/perceptiveInfo/online.png" />
                     <span v-show="details.physical.able != 0" :class="$style.iconTitle">{{ details.physical.online == 0 ? '离线' : '在线' }}</span>
                 </span>

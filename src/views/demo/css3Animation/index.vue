@@ -65,7 +65,7 @@
 <template>
     <div ref="right1" :class="$style.right1">
         <div :class="$style.label">
-            <a>传感器类型<edgeBorder color="#00fff3" /></a>
+            <a>传感器类型<edgeBorder color="#00fff3"/></a>
         </div>
 
         <div :class="$style.wrap">
@@ -114,6 +114,12 @@ export default {
             // let data = await Api.sensorTypeCards();  // 接口获取数据
             this.sensorCardList = [
                 {
+                    sensorTypeName: '避雷器泄漏电流测试传感器',
+                    onlineCount: '29',
+                    offlineCount: 58,
+                    total: '87'
+                },
+                {
                     sensorTypeName: '温度传感器',
                     onlineCount: '1148',
                     offlineCount: 1028,
@@ -143,12 +149,7 @@ export default {
                     offlineCount: 57,
                     total: '111'
                 },
-                {
-                    sensorTypeName: '避雷器泄漏电流传感器',
-                    onlineCount: '29',
-                    offlineCount: 58,
-                    total: '87'
-                },
+
                 {
                     sensorTypeName: '导线风偏传感器',
                     onlineCount: '38',
@@ -246,7 +247,7 @@ export default {
                     total: '1'
                 }
             ];
-            this.animate = this.sensorCardList.length > 8;
+            // this.animate = this.sensorCardList.length > 8;
         }
     }
 };
