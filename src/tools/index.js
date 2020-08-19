@@ -1,17 +1,21 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: ZZF
- * @Date: 2020-06-08 15:31:51
- * @LastEditors: ZZF
- * @LastEditTime: 2020-06-12 09:39:44
- */
 /**
  * @description: 日期时间格式化
  * @param {dateTime} 时间戳等可转化为Date类型的值
  * @param {fmt} 结果格式
  * @return:
  */
+
+//首先要对HTMLElement进行类型检查，因为即使在支持HTMLElement
+//的浏览器中，类型却是有差别的，在Chrome,Opera中HTMLElement的
+//类型为function，此时就不能用它来判断了
+const isDOM =
+    typeof HTMLElement === 'object'
+        ? function(obj) {
+              return obj instanceof HTMLElement;
+          }
+        : function(obj) {
+              return obj && typeof obj === 'object' && obj.nodeType === 1 && typeof obj.nodeName === 'string';
+          };
 const dateFormat = (dateTime, fmt = 'yyyy-MM-dd hh:mm:ss') => {
     let date = new Date(dateTime);
     let o = {
@@ -70,8 +74,25 @@ const filterNotNullObj = sourceObj => {
     return notNull && targetObj;
 };
 
+// 过滤对象属性得到非空key的值
+const fullScreen = elem => {
+    if (!elem) {
+        elem = document.querySelector('body');
+    } else if (!isDOM(elem)) {
+        throw new Error('参数异常，不是DOM元素');
+    }
+    if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => {
+            alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+};
+
 export default {
     dateFormat,
     filterNotNullObj,
-    getQueryObject
+    getQueryObject,
+    fullScreen
 };
