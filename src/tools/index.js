@@ -89,10 +89,40 @@ const fullScreen = elem => {
         document.exitFullscreen();
     }
 };
+/**数组根据数组对象中的某个属性值进行排序的方法
+ * 使用例子：newArray.sort(sortBy('number','desc')) //表示根据number属性降序排列;若第二个参数不传递，默认表示升序排序
+ * @param attr 排序的属性 如number属性
+ * @param rev asc表示升序排列(默认)，desc降序排序
+ * */
+const objArraySortBy = function(attr, rev = 'asc') {
+    if (!['asc', 'desc'].includes(rev)) {
+        console.err(`第二个参数只能为'asc'或者'desc'`);
+        return;
+    }
+    if (rev === 'asc') {
+        rev = 1;
+    } else {
+        rev = -1;
+    }
 
+    return function(a, b) {
+        if (!a[attr] || !b[attr]) {
+            return 0;
+        }
+        a = a[attr];
+        b = b[attr];
+        if (a < b) {
+            return rev * -1;
+        }
+        if (a > b) {
+            return rev * 1;
+        }
+    };
+};
 export default {
     dateFormat,
     filterNotNullObj,
     getQueryObject,
-    fullScreen
+    fullScreen,
+    objArraySortBy
 };

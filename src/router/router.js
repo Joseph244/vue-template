@@ -42,6 +42,22 @@ export const appRouter = [
                 component: resolve => {
                     require(['@/views/demo/create-keyframe-animation/index.vue'], resolve);
                 }
+            },
+            {
+                path: '/vueDraggable',
+                name: 'vueDraggable',
+                title: '拖拽组件',
+                component: resolve => {
+                    require(['@/views/demo/vueDraggable/index.vue'], resolve);
+                }
+            },
+            {
+                path: '/test',
+                name: 'test',
+                title: '测试页面',
+                component: resolve => {
+                    require(['@/views/demo/test/index.vue'], resolve);
+                }
             }
         ]
     },

@@ -13,3 +13,15 @@ export default {
     }
 };
 </script>
+<style>
+/* @keyframes labelMove {
+    0% {
+        left: 0px;
+        transform: translate(0, 0);
+    }
+    100% {
+        left: 100%;
+        transform: translate(-100%, 0);
+    }
+} */
+</style>
