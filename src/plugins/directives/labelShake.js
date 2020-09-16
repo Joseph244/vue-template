@@ -39,3 +39,16 @@ style.innerHTML = runkeyframes;
 document.getElementsByTagName('head')[0].appendChild(style);
 
 export default index;
+
+// 使用案例
+
+/* <style lang='less' module>
+.test {
+    width: 200px;
+}
+</style>
+<template>
+    <div :class="$style.test">
+        <span v-label-shake>开发建设的方法绝地反击副教授副教授就</span>
+    </div>
+</template> */
