@@ -3,39 +3,39 @@
 </style>
 
 <template>
-  <el-dialog
-    :class="$style.container"
-    :visible.sync="visible"
-    :title="title"
-    width="400px"
-  >
-    <div :class="$style.msg">
-      <i
-        class="el-icon-warning"
-        :class="$style.icon"
-      ></i>
-      {{ message }}
-    </div>
+    <el-dialog
+        :class="$style.container"
+        :visible.sync="visible"
+        :title="title"
+        width="400px"
+            >
+        <div :class="$style.msg">
+            <i
+                class="el-icon-warning"
+                :class="$style.icon"
+                    ></i>
+            {{ message }}
+        </div>
 
-    <div
-      slot="footer"
-      :class="$style.btns"
-    >
-      <el-button
-        type="primary"
-        @click="cancel"
-      >
-        取消
-      </el-button>
-      <el-button
-        type="primary"
-        plain
-        @click="submit"
-      >
-        确认
-      </el-button>
-    </div>
-  </el-dialog>
+        <div
+            slot="footer"
+            :class="$style.btns"
+                >
+            <el-button
+                type="primary"
+                @click="cancel"
+                    >
+                取消
+            </el-button>
+            <el-button
+                type="primary"
+                plain
+                @click="submit"
+                    >
+                确认
+            </el-button>
+        </div>
+    </el-dialog>
 </template>
 
 <script>

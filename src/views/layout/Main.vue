@@ -1,11 +1,11 @@
 <template>
-  <div :class="$style.main">
-    <Header />
-    <div :class="$style.container">
-      <LeftMenu @changeRoute="changeRoute" />
-      <router-view :key="key" />
+    <div :class="$style.main">
+        <Header />
+        <div :class="$style.container">
+            <LeftMenu @changeRoute="changeRoute" />
+            <router-view :key="key" />
+        </div>
     </div>
-  </div>
 </template>
 <script>
 import Header from './Header.vue';

@@ -1,0 +1,132 @@
+.sensorCard {
+    min-width: 370px;
+    min-height: 200px;
+    width: 24%;
+    .sensor_cardContent {
+        width: 100%;
+        height: 100%;
+        .content_top {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 5px;
+        }
+        .sensorTitle {
+            float: left;
+            width: 300px;
+            font-size: 18px;
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            cursor: pointer;
+        }
+        .power {
+            float: right;
+            margin-top: 5px;
+        }
+        .sensorProperty {
+            width: 100%;
+            height: 40%;
+            min-height: 80px;
+            max-height: 80px;
+            display: flex;
+            overflow: hidden;
+            .cardContent {
+                width: 100%;
+                height: 40%;
+                min-height: 80px;
+                max-height: 80px;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                .property {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 50%;
+                    height: 100%;
+                    padding: 0 10px;
+                    .fun {
+                        // color: rgb(0, 168, 164);
+                        font-size: 15px;
+                        overflow: hidden;
+                        max-width: 50%;
+                        margin-right: 8px;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        cursor: pointer;
+                        .index {
+                            vertical-align: top;
+                            font-size: 10px;
+                        }
+                    }
+                    .value {
+                        // width: 50%;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        // color: rgb(0, 255, 246);
+                        .recentVal {
+                            font-family: PIXELLCD7;
+                            font-size: 18px;
+                            cursor: pointer;
+                        }
+                        .dataUnit {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+            .pageArrow {
+                width: 50%;
+                padding: 0 10px;
+                .leftArrow {
+                    position: absolute;
+                    left: 0px;
+                    cursor: pointer;
+                    width: 20px;
+                    height: 100%;
+                    margin-right: 5px;
+                    background: url('../../../images/perceptiveInfo/leftArrow.png') no-repeat center;
+                }
+                .leftArrow:hover {
+                    background: url('../../../images/perceptiveInfo/leftArrow_hover.png') no-repeat center;
+                }
+                .leftArrow_disable {
+                    background: url('../../../images/perceptiveInfo/leftArrow_disable.png') no-repeat center;
+                }
+            }
+            // .funNo {
+            //     max-width: 70px;
+            //     overflow: hidden;
+            //     white-space: nowrap;
+            //     text-overflow: ellipsis;
+            //     display: inline-block;
+            //     cursor: pointer;
+            // }
+        }
+    }
+    .triangleTopright {
+        width: 0;
+        height: 0;
+        border-top: 12px solid currentColor;
+        border-left: 12px solid transparent;
+    }
+
+    .footer {
+        width: 100%;
+        height: 20%;
+        display: table;
+        .iconImg {
+            height: 18px;
+            margin-left: 6px;
+            margin-bottom: -2px;
+        }
+        .iconTitle {
+            color: rgb(255, 255, 255);
+            font-size: 15px;
+            margin-left: 6px;
+        }
+    }
+}

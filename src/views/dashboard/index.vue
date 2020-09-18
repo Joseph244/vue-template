@@ -3,16 +3,16 @@
 }
 </style>
 <template>
-  <div :class="$style.firstPage">
-    <div
-      id="model1"
-      style="border:1px solid red; width:900px;height:700px;"
-    ></div>
-    <div
-      id="WebGL-output"
-      style="border:1px solid red; width:900px;height:700px;"
-    ></div>
-  </div>
+    <div :class="$style.firstPage">
+        <div
+            id="model1"
+            style="border:1px solid red; width:900px;height:700px;"
+                ></div>
+        <div
+            id="WebGL-output"
+            style="border:1px solid red; width:900px;height:700px;"
+                ></div>
+    </div>
 </template>
 <script>
 import * as THREE from 'three';

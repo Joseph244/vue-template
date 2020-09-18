@@ -5,8 +5,14 @@
   "scripts": {
     "dev": "vue-cli-service serve --mode dev",
     "local-build": "vue-cli-service build --mode build",
+    "prebuild": "echo '打包开始'",
+    "postbuild": "echo '打包完毕'",
     "build": "vue-cli-service build --mode prod",
     "lint": "vue-cli-service lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Joseph244/vue-template.git"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -23,6 +29,7 @@
     "vue": "^2.6.11",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.1.6",
+    "vuedraggable": "^2.24.1",
     "vuex": "^3.2.0",
     "xlsx": "^0.16.4"
   },
@@ -34,7 +41,9 @@
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-service": "^3.8.0",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "compression-webpack-plugin": "^4.0.0",
+    "create-keyframe-animation": "^0.1.0",
     "element-ui": "^2.13.1",
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.9.1",

@@ -1,46 +1,33 @@
 <template>
-  <header :class="$style.systemHeader">
-    <div :class="$style.company">
-      <img
-        v-show="companyInfo.companyLogo"
-        :class="$style.companyLogo"
-        src="../../images/stateGrid_whiteLogo.png"
-      />
-      <div>
-        <div :class="$style.chineseTitle">
-          {{ companyInfo.mainTitle.split('/')[0] || '' }}
+    <header :class="$style.systemHeader">
+        <div :class="$style.company">
+            <img v-show="companyInfo.companyLogo" :class="$style.companyLogo" src="../../images/stateGrid_whiteLogo.png" />
+            <div>
+                <div :class="$style.chineseTitle">
+                    {{ companyInfo.mainTitle.split('/')[0] || '' }}
+                </div>
+                <div :class="$style.englishTitle">
+                    {{ companyInfo.subTitle.split('/')[0] || '' }}
+                </div>
+                <div v-show="companyInfo.mainTitle" style="border:1px solid #c4fafa9c;width:10em;"></div>
+                <div :class="$style.chineseTitle">
+                    {{ companyInfo.mainTitle.split('/')[1] || '' }}
+                </div>
+                <div :class="$style.englishTitle">
+                    {{ companyInfo.subTitle.split('/')[1] || '' }}
+                </div>
+            </div>
         </div>
-        <div :class="$style.englishTitle">
-          {{ companyInfo.subTitle.split('/')[0] || '' }}
-        </div>
-        <div
-          v-show="companyInfo.mainTitle"
-          style="border:1px solid #c4fafa9c;width:10em;"
-        ></div>
-        <div :class="$style.chineseTitle">
-          {{ companyInfo.mainTitle.split('/')[1] || '' }}
-        </div>
-        <div :class="$style.englishTitle">
-          {{ companyInfo.subTitle.split('/')[1] || '' }}
-        </div>
-      </div>
-    </div>
-    <img
-      src="../../images/title-decorate.png"
-      :class="$style.titleBefore"
-    />
-    <img
-      :class="$style.titleLogo"
-      alt=""
-    />
-    <span :class="$style.title">
-      {{ title }}
-    </span>
-    <img
-      src="../../images/title-decorate.png"
-      :class="$style.titleAfter"
-    />
-  </header>
+        <img src="../../images/title-decorate.png" :class="$style.titleBefore" />
+        <img :class="$style.titleLogo" alt="" />
+        <span :class="$style.title">
+            {{ title }}
+        </span>
+        <img src="../../images/title-decorate.png" :class="$style.titleAfter" />
+        <el-tooltip effect="dark" :content="fullScreenFlag ? '退出全屏' : '全屏显示'" placement="top">
+            <i :class="$style.fullScreenBtn" class="el-icon-full-screen" @click="fullScreen"></i>
+        </el-tooltip>
+    </header>
 </template>
 <script>
 export default {
@@ -52,12 +39,19 @@ export default {
                 mainTitle: '国家电网/国网江苏省电力有限公司电力科学研究院',
                 subTitle: 'STATE GRID/STATE GRID JIANGSU ELECTRIC POWER CO.,LTD RESEARCH INSTITUT'
             },
+            fullScreenFlag: false,
             title: '网络统一管理平台'
         };
     },
     computed: {
         authorName() {
             return this.$store.state.authorName;
+        }
+    },
+    methods: {
+        fullScreen() {
+            this.$tools.fullScreen();
+            this.fullScreenFlag = !this.fullScreenFlag;
         }
     }
 };
@@ -115,6 +109,13 @@ export default {
         height: 28px;
         margin-right: 10px;
         margin-top: 2px;
+    }
+    .fullScreenBtn {
+        position: absolute;
+        right: 20px;
+        color: #149593;
+        font-size: 20px;
+        cursor: pointer;
     }
 }
 </style>

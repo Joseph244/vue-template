@@ -55,33 +55,33 @@
 }
 </style>
 <template>
-  <aside :class="$style.leftMenu">
-    <!-- {{ activeMenu }}
+    <aside :class="$style.leftMenu">
+        <!-- {{ activeMenu }}
         {{ activeParent }} -->
-    <div
-      v-for="item in menus"
-      :key="item.name"
-      class="menuItem"
-    >
-      <nav
-        :class="['first', activeParent === item.name ? 'activeParent' : '']"
-        @click="gotoRoute(item)"
-      >
-        <i :class="item.icon"></i>{{ item.title }}
-      </nav>
-      <div
-        v-for="child in item.children"
-        :key="child.name"
-        :class="['second', activeMenu === child.name ? 'activeMenu' : '']"
-        @click="gotoRoute(child)"
-      >
-        <i
-          v-if="activeMenu === child.name"
-          class="el-icon-caret-right activeIcon"
-        ></i> {{ child.title }}
-      </div>
-    </div>
-  </aside>
+        <div
+            v-for="item in menus"
+            :key="item.name"
+            class="menuItem"
+                >
+            <nav
+                :class="['first', activeParent === item.name ? 'activeParent' : '']"
+                @click="gotoRoute(item)"
+                    >
+                <i :class="item.icon"></i>{{ item.title }}
+            </nav>
+            <div
+                v-for="child in item.children"
+                :key="child.name"
+                :class="['second', activeMenu === child.name ? 'activeMenu' : '']"
+                @click="gotoRoute(child)"
+                    >
+                <i
+                    v-if="activeMenu === child.name"
+                    class="el-icon-caret-right activeIcon"
+                        ></i> {{ child.title }}
+            </div>
+        </div>
+    </aside>
 </template>
 <script>
 export default {
