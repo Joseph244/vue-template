@@ -7,7 +7,13 @@ let myBus = new Vue();
  * @LastEditTime: 2019-08-10 14:59:34
  */
 
-//  websocket连接地址(联调和开发环境不一样，要注意修改)
+//  websocket连接地址(联调和开发环境不一样，要注意修改;如果配置走了nginx需要在nginx上配置好websocket的转发规则)
+// location /iotInfo/sensorResponse{
+//     proxy_pass http://127.0.0.1:3002/iotInfo/sensorResponse;
+//      proxy_http_version 1.1;
+//      proxy_set_header Upgrade $http_upgrade;
+//      proxy_set_header Connection "upgrade";
+// }
 const href = process.env.NODE_ENV == 'development' ? '192.168.78.228:3002' : window.location.host;
 const websocketUrl = `ws://${href}/iotInfo/sensorResponse`;
 /**
@@ -114,3 +120,21 @@ export default {
     add: addSocketEvent,
     delete: delSocketEvent
 };
+
+// vue使用demo
+//  mounted() {
+//         this.$websocket.add('sensorConfig', socketRes => {
+//             console.log('socket收到的信息,sensorConfig:', socketRes);
+//             if (socketRes.sensorConfigRes.successArrr.length > 0) {
+//                 this.$Message.success(socketRes.sensorConfigRes.successArrr.join(',') + '配置成功');
+//             }
+//             if (socketRes.sensorConfigRes.errorArr.length > 0) {
+//                 this.$Message.warning(socketRes.sensorConfigRes.errorArr.join(',') + '配置失败');
+//             }
+//             this.getSensors();
+//         });
+//     },
+//     beforeDestroy() {
+//         // 卸载websocket
+//         this.$websocket.delete('sensorConfig');
+//     },

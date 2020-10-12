@@ -2,19 +2,19 @@
     <div :class="$style.main">
         <Header />
         <div :class="$style.container">
-            <LeftMenu @changeRoute="changeRoute" />
+            <!-- <LeftMenu @changeRoute="changeRoute" /> -->
             <router-view :key="key" />
         </div>
     </div>
 </template>
 <script>
 import Header from './Header.vue';
-import LeftMenu from './LeftMenu.vue';
+// import LeftMenu from './LeftMenu.vue';
 export default {
     name: 'Main',
     components: {
         Header,
-        LeftMenu
+        // LeftMenu
     },
     computed: {
         key() {

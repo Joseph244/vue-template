@@ -56,7 +56,7 @@ export const appRouter = [
                 name: 'test',
                 title: '测试页面',
                 component: resolve => {
-                    require(['@/views/demo/test/index.vue'], resolve);
+                    require(['@/views/demo/test/labelShake.vue'], resolve);
                 }
             }
         ]

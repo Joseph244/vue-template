@@ -58,9 +58,8 @@ export default {
 </script>
 <style lang="less" module>
 .systemHeader {
-    height: @headerHeight;
     width: 100%;
-    // padding: 0 20px;
+    padding: 6px 10px;
     background: linear-gradient(
         90deg,
         rgba(9, 67, 66, 0.9) 0%,
@@ -71,14 +70,9 @@ export default {
     );
     border: 1px solid #149593;
     display: flex;
-    justify-content: center;
     align-items: center;
-    span {
-        line-height: @headerHeight;
-    }
+   
     .company {
-        position: absolute;
-        left: 20px;
         color: @color-title;
         font-size: 14px;
         color: #c4fafa;

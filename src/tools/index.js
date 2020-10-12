@@ -106,17 +106,15 @@ const objArraySortBy = function(attr, rev = 'asc') {
     }
 
     return function(a, b) {
-        if (!a[attr] || !b[attr]) {
-            return 0;
-        }
         a = a[attr];
         b = b[attr];
         if (a < b) {
-            return rev * -1;
+            return -1;
         }
         if (a > b) {
-            return rev * 1;
+            return 1;
         }
+        return 0;
     };
 };
 export default {
