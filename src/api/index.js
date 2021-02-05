@@ -14,8 +14,6 @@ const axios = Axios.create({
 // 添加请求拦截器
 axios.interceptors.request.use(
     function(config) {
-        // 在这里做认证，可以从store里面获取token
-        // config.headers['Authorization'] = `Bearer ${store.getters.getAccessToken}`
         if (config.method.toLocaleLowerCase() === 'post' || config.method.toLocaleLowerCase() === 'put') {
             // 参数统一处理，请求都使用data传参
             config.data = config.data.data;
@@ -48,14 +46,21 @@ axios.interceptors.response.use(
             // 自定义约定接口返回{code: xxx, data: xxx, msg:'err message'}
             // code:200 数据正常； ！200 数据获取异常
             if (response.data.code == 200) {
-                // if (response.config.method.toLocaleLowerCase() === 'post' || response.config.method.toLocaleLowerCase() === 'put') {
-                //     Notification({
-                //         title: '成功',
-                //         message: response.data.msg,
-                //         type: 'success'
-                //     });
-                // }
+                if (response.config.method.toLocaleLowerCase() === 'post' || response.config.method.toLocaleLowerCase() === 'put') {
+                    Notification({
+                        title: '成功',
+                        message: response.data.msg,
+                        type: 'success'
+                    });
+                }
                 return response.data.data;
+            } else if (response.data.code == 401) {
+                Notification({
+                    title: '认证异常',
+                    message: '登录状态已过期，请重新登录！',
+                    type: 'error'
+                });
+                window.location.href = window.location.origin;
             } else {
                 Notification({
                     title: '操作失败',

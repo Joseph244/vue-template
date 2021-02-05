@@ -1,50 +1,42 @@
 <style lang='less' module>
 .test {
-    width: 200px;
+    width: 100%;
+    padding: 20px;
 }
 </style>
 <template>
     <div :class="$style.test">
-        <span v-label-shake>开发建设的方法绝地反击副教授副教授就</span>
-        <div>
-            <!-- <el-input v-model="input1" placeholder="请输入内容" /> -->
-            <!-- <input :value="oldNum" @input="change" @change="change" /> -->
-
-            <input v-model="input1" v-input-number />
-            <input v-model="input2" v-input-number.float />
-            <input v-model="input3" v-input-number.int />
+        <h1>测试的</h1>
+        <pdf :src="fileUrl" :page="currentPage" style="width:500px" @num-pages="pageCount=$event" />
+        <!-- 分页根据需求使用 -->
+        <div v-if="pageCount > 1" class="page-view">
+            <span class="turn" :class="{grey: currentPage==1}" @click="currentPage > 1 ? currentPage-- : 1">Preview</span>
+            {{ currentPage }} / {{ pageCount }}
+            <span class="turn" :class="{grey: currentPage==pageCount}" @click="currentPage < pageCount ? currentPage++ : 1">Next</span>
         </div>
     </div>
 </template>
 <script>
-// import {} from '@/api'
+ import pdf from 'vue-pdf'
 export default {
   name: 'Test',
+     components: {
+      pdf
+    },
   data() {
     return {
-      input1: null,
-      input2: null,
-      input3: null,
-      input4: null,
-      oldNum: null
+      pageCount: 0,
+        currentPage: 1,
+        fileUrl: '/vue01_核心.pdf'
     };
   },
   computed: {
-    input() {
-      return this.oldNum
-    }
+   
   },
   watch: {},
   created() { },
   methods: {
-    change(event) {
-      let val = event.target.value.trim();
-      if (/^[1-9]\d*$|^$/.test(val)) {
-        this.oldNum = val
-      } else {
-        event.target.value = this.oldNum
-      }
-    }
+  
   }
 };
 </script>

@@ -3,16 +3,16 @@
  * 检测图片是否存在
  * @param url
  */
-let imageIsExist = function (url) {
+let imageIsExist = function(url) {
     return new Promise(resolve => {
         var img = new Image();
-        img.onload = function () {
+        img.onload = function() {
             if (this.complete == true) {
                 resolve(true);
                 img = null;
             }
         };
-        img.onerror = function () {
+        img.onerror = function() {
             resolve(false);
             img = null;
         };
@@ -36,7 +36,6 @@ export default {
         Vue.directive('img-url', install);
     }
 };
-
 
 /* // 使用案例：src的值为加载不到时候的默认图片，v-img-url值为真实需要加载的图片
 <img src="../../images/icon/appDefaultIcon.png" class="appIconImg" v-img-url="inapp.icon" @click="openApp(inapp)" /> */

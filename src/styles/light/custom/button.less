@@ -1,0 +1,84 @@
+.el-button {
+    border-radius: @border-radius-base;
+}
+
+.el-button--default {
+}
+.el-button--medium {
+}
+.el-button--small {
+    padding: 7px 15px;
+}
+.el-button--mini {
+    padding: 5px 10px;
+}
+
+.el-button--text {
+    color: #5fafff;
+}
+.el-button--primary {
+    background: #5fafff;
+    border-color: #5fafff;
+    &:hover,
+    &:active {
+        background-color: #519fee;
+        border-color: #519fee;
+    }
+}
+
+.el-button--info {
+    background-color: #26cfff;
+    border-color: #26cfff;
+    &:hover,
+    &:active {
+        background-color: #1cc7f8;
+        border-color: #1cc7f8;
+    }
+}
+.el-button--danger {
+    background: #fd878a;
+    border-color: #fd878a;
+    &:hover,
+    &:active {
+        background-color: #fc7174;
+        border-color: #fc7174;
+    }
+}
+
+.el-button--success {
+    background-color: #54d189;
+    border-color: #54d189;
+    &:hover,
+    &:active {
+        background-color: #50b87c;
+    }
+}
+
+.el-button--warning {
+    &:hover,
+    &:active {
+        border-color: #fdc51b;
+        background-color: #fdc51b;
+    }
+}
+
+.el-button.is-disabled,
+.el-button.is-disabled:focus,
+.el-button.is-disabled:hover {
+    color: #c0c4cc;
+    cursor: not-allowed;
+    background-image: none;
+    background-color: #ebeef5;
+    border-color: #c0c4cc;
+    box-shadow: none;
+}
+
+// plain
+.el-button--primary.is-plain {
+    background: #00ffff;
+    border-color: #00ffff;
+    color: #003333;
+}
+.el-button--primary.is-plain:hover {
+    .el-button--primary();
+}

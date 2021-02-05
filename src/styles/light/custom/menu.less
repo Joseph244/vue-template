@@ -1,0 +1,33 @@
+.type {
+    height: 56px;
+    line-height: 56px;
+    font-size: 16px;
+    color: #666666;
+    > i {
+        color: currentColor;
+    }
+}
+.el-menu {
+    background-color: #ffffff;
+    &.el-menu--horizontal {
+        border-bottom: none;
+        > .el-menu-item.is-active {
+            background-color: #ffffff;
+            border-bottom: 3px solid #3399ff;
+            color: #666667;
+            font-weight: bold;
+        }
+        > .el-menu-item:not(.is-disabled):focus,
+        > .el-menu-item:not(.is-disabled):hover,
+        > .el-submenu .el-submenu__title {
+            .type();
+            &:hover {
+                background-color: #e4e7ed;
+            }
+        }
+    }
+
+    .el-menu-item {
+        .type();
+    }
+}

@@ -1,0 +1,81 @@
+.el-table {
+    background-color: transparent;
+    // .el-table__expand-icon {
+    //     color: #00fff6;
+    // }
+    .el-table__header {
+        thead tr th {
+            border: none;
+            font-size: 15px;
+            font-weight: bold;
+            color: rgb(239, 245, 245);
+            background-color: #e5f3ff;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            padding: 0;
+            > .cell {
+                color: #666667;
+            }
+        }
+    }
+
+    .el-table__body {
+        tbody tr td {
+            padding: 0;
+            height: 60px;
+            line-height: 60px;
+        }
+        .el-table__row {
+            // background-color: #033937;
+            &.el-table__row--striped td {
+                // background-color: rgba(0, 0, 0, 0.15);
+            }
+            &.current-row > td,
+            &.current-row:hover > td,
+            &.el-table__row--striped.current-row td,
+            &.el-table__row--striped.current-row:hover td {
+                background: #d2dded;
+            }
+        }
+    }
+
+    &.el-table--border {
+        .el-table__body tbody tr td {
+            border-right: 1px solid #ebeef5;
+        }
+    }
+    .el-table__row {
+        .cell {
+            font-size: 14px;
+            text-align: center; // 默认居中排列
+        }
+    }
+    // &.el-table--enable-row-hover .el-table__body tr:hover > td {
+    //     background-color:;
+    // }
+
+    // .el-table__fixed-body-wrapper .el-table__body tbody tr td {
+    //     background-color: rgba(2, 58, 58, 1);
+    // }
+
+    // .el-table__fixed-right-patch {
+    //     background-color: rgba(5, 156, 156, 1);
+    //     border-bottom: 1px solid rgba(5, 156, 156, 1);
+    // }
+
+    .el-table__fixed-right:before,
+    .el-table__fixed:before {
+        height: 0;
+    }
+
+    // .el-table__empty-block {
+    //     width: 100% !important;
+    //     border-top: 0 none;
+    //     .el-table__empty-text {
+    //         font-size: 20px;
+    //         color: #00fff6;
+    //         letter-spacing: 10px;
+    //     }
+    // }
+}

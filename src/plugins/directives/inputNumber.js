@@ -29,4 +29,10 @@ export default index;
 // 使用案例
 /* <input v-model="input1" v-input-number />
 <input v-model="input2" v-input-number.float />
-<input v-model="input3" v-input-number.int /> */
+<input v-model="input3" v-input-number.int />
+
+// 如果结合elementUI使用则为：
+ <div class="el-input el-input--mini">
+    <input class="el-input__inner" v-model="scope.row.interval" v-input-number />
+</div>
+*/

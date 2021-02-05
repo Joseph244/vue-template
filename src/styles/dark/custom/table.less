@@ -1,0 +1,75 @@
+.el-table {
+    &::before {
+        background-color: transparent;
+    }
+    background: transparent;
+    // border: 1px solid rgba(5, 180, 180, 0.22);
+
+    .el-table__header {
+        thead tr th {
+            border: none;
+            font-size: 15px;
+            color: rgb(239, 245, 245);
+            background-color: rgba(5, 156, 156, 1);
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            padding: 0;
+        }
+    }
+    .tdSty() {
+        padding: 0;
+        color: #eff5f5;
+        height: 60px;
+        line-height: 60px;
+        background-color: transparent;
+        border-bottom: 1px solid #1ca2a3;
+    }
+    .el-table__body {
+        background: rgba(5, 180, 180, 0.22);
+        tbody tr td {
+            .tdSty();
+        }
+
+        tr:nth-child(odd) {
+            background-color: rgba(4, 88, 87, 0.22);
+        }
+
+        tr:nth-child(2n) {
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    &.el-table--border {
+        .el-table__body tbody tr td {
+            border-right: 1px solid #1ca2a3;
+        }
+    }
+
+    &.el-table--enable-row-hover .el-table__body tr:hover > td {
+        background-color: transparent;
+    }
+
+    .el-table__fixed-body-wrapper .el-table__body tbody tr td {
+        background-color: rgba(2, 58, 58, 1);
+    }
+
+    .el-table__fixed-right-patch {
+        background-color: rgba(5, 156, 156, 1);
+        border-bottom: 1px solid rgba(5, 156, 156, 1);
+    }
+
+    .el-table__fixed-right:before,
+    .el-table__fixed:before {
+        height: 0;
+    }
+
+    .el-table__empty-block {
+        width: 100% !important;
+        border-top: 0 none;
+        .el-table__empty-text {
+            font-size: 20px;
+            color: #00fff6;
+        }
+    }
+}
