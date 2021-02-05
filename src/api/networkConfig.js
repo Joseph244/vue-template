@@ -5,7 +5,13 @@ export default {
      * @description网络配置列表页
      */
     // （已订）获取接入节点信息列表
-    jrNode_query: data => axios.get('/networkConfig/jrNode/query', { data }),
+    jrNode_query: data => {
+        for (let i = 0; i < 2000000000; i++) {
+            let x = 0;
+            x += i;
+        }
+        return axios.get('http://rap2api.taobao.org/app/mock/87055/substation/voltageNum', { data });
+    },
     // （已订）获取汇聚节点信息列表
     hjNode_query: data => axios.get('/networkConfig/hjNode/query', { data }),
     // 获取传感器列表

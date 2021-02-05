@@ -9,8 +9,8 @@
         <div :class="$style.btns">
             <UploadParseExcel @excelData="getUploadSensor">
                 <el-button type="primary" icon="el-icon-upload">
-上传传感器
-</el-button>
+                    上传传感器
+                </el-button>
             </UploadParseExcel>
             <el-button
                 type="primary"
@@ -18,16 +18,16 @@
                 style="margin-left: 10px"
                 @click="emptyStation"
                     >
-清空拓扑
-</el-button>
+                清空拓扑
+            </el-button>
             <el-button
                 type="primary"
                 icon="el-icon-document-checked"
                 style="margin-left: 10px"
                 @click="submit"
                     >
-保存拓扑
-</el-button>
+                保存拓扑
+            </el-button>
         </div>
 
         <transition name="el-fade-in-linear">
@@ -56,8 +56,8 @@
                                             :value="isSelectAll(item.sensorList)"
                                             @change="v => selectAllSensor(v, item.sensorList)"
                                                 >
-全选
-</el-checkbox>
+                                            全选
+                                        </el-checkbox>
                                     </div>
                                     <ul :class="$style.menu3">
                                         <li v-for="(val, i) in item.sensorList" :key="i">
@@ -65,8 +65,8 @@
                                                 :value="isSelect(val.sensorId)"
                                                 @change="v => selectSensor(v, val)"
                                                     >
-ID_{{ val.sensorId }}
-</el-checkbox>
+                                                ID_{{ val.sensorId }}
+                                            </el-checkbox>
                                         </li>
                                     </ul>
                                 </div>
@@ -74,13 +74,13 @@ ID_{{ val.sensorId }}
                         </li>
                         <li :class="$style.btn">
                             <el-button type="primary" size="mini" @click="saveSensor">
-确定
-</el-button>
+                                确定
+                            </el-button>
                         </li>
                     </ul>
                     <p v-else :class="$style.tip">
-暂无传感器
-</p>
+                        暂无传感器
+                    </p>
                 </el-popover>
                 <li v-if="curMenuItem.type < 3" :class="$style.menuItem" @click="addNode">
                     <i class="el-icon-circle-plus-outline"></i> 新建节点
