@@ -5,8 +5,7 @@
     margin: 10px;
     padding: 70px 65px;
     font-size: 20px;
-    background: url('../../../images/sensorTypeCard_bg.png') no-repeat;
-    background-size: cover;
+    border: 1px solid #00ffff;
     display: flex;
     .left {
         > div {

@@ -1,4 +1,4 @@
-const GreenT = {
+const dark = {
     colorsSeries: ['#30ce9b', '#24a8d4', '#e4c937', '#338cfb', '#fb7a33', '#9133fb', '#e74976'],
     axisColor: '#18a7a5',
     gridLine: '#12918c',
@@ -15,7 +15,7 @@ const GreenT = {
         }
     }
 };
-const BlueWhiteT = {
+const light = {
     colorsSeries: ['#30ce9b', '#24a8d4', '#e4c937', '#42f4bb', '#338cfb', '#fb7a33'],
     axisColor: 'grey',
     gridLine: '#f4f4f4',
@@ -23,7 +23,7 @@ const BlueWhiteT = {
 };
 
 const echrtsTheme = () => {
-    return process.env.VUE_APP_THEME === 'BlueWhiteT' ? BlueWhiteT : GreenT;
+    return process.env.VUE_APP_THEME === 'light' ? light : dark;
 };
 console.log(echrtsTheme());
 export default echrtsTheme();

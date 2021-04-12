@@ -5,7 +5,7 @@ export const appRouter = [
         path: '/',
         title: '首页',
         component: Main,
-        redirect: 'docx',
+        redirect: 'test',
         children: [
             {
                 path: 'dashboard',
@@ -48,14 +48,6 @@ export const appRouter = [
                 title: 'css3固定动画',
                 component: resolve => {
                     require(['@/views/demo/css3Animation/index.vue'], resolve);
-                }
-            },
-            {
-                path: '/create-keyframe-animation',
-                name: 'create-keyframe-animation',
-                title: 'keyframe灵活动画',
-                component: resolve => {
-                    require(['@/views/demo/create-keyframe-animation/index.vue'], resolve);
                 }
             },
             {

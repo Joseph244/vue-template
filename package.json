@@ -40,7 +40,9 @@
         "vue-pdf": "^4.2.0",
         "vue-quill-editor": "^3.0.6",
         "vue-router": "^3.4.9",
+        "vue-seamless-scroll": "^1.1.23",
         "vuedraggable": "^2.24.3",
+        "webpack-spritesmith": "^1.1.0",
         "xlsx": "^0.16.9"
     },
     "devDependencies": {

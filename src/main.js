@@ -3,8 +3,8 @@ import Vue from 'vue';
 // import { Vue as VueIntegration } from '@sentry/integrations';
 import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
-// import './styles/blueWhite/index.css';
-import './styles/iot/index.css'; // element 主题
+// import './styles/light/index.css';
+import './styles/dark/index.css'; // element 主题
 
 // 主题颜色变量字典表
 import '@/styles/index.less';

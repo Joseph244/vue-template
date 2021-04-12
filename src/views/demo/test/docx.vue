@@ -1,50 +1,76 @@
-<style lang='less' module>
-.docx {
-    height: 100%;
-    overflow: auto;
-}
-</style>
+
+​
 <template>
-    <div :class="$style.docx">
-        docx 泰州公司物联网平台应用周报.docx
-        <div id="wordView" v-html="vHtml"></div>
+    <div class="rolling overflow-hide" :style="{height: '50px'}">
+        <!-- <div>
+            <img src="../../../images/spriteImgs/able.png" />
+            <img src="../../../images/spriteImgs/alert.png" />
+            <img src="../../../images/spriteImgs/borderCorner.png" />
+            <img src="../../../images/spriteImgs/equEvent.png" />
+        </div> -->
+        <i class="icon icon-equEvent"></i>
+        <i class="icon icon-alert"></i>
+        <i class="icon icon-high"></i>
+        <i class="icon icon-leftArrow"></i>
+        <i class="icon icon-offline"></i>
     </div>
 </template>
+ 
 <script>
-import mammoth from 'mammoth'
 export default {
-    name:'Docx',
-    data (){
-    return {
-         vHtml: "",
-        // wordURL:'/泰州公司物联网平台应用周报.docx'
-        wordURL:'/117西安金源风偏.docx'
+  name: 'Rolling',
+  props: {
+    // 需要滚动内容列表, 默认数组
+    eventWarning: {
+      type: Array,
+      default: () => {
+        return [1,2,3,4,5,6,7,8,89]
+      }
+    },
+    // 需要滚动内容的高度,默认Number
+    rollingHeight: {
+      type: Number,
+      default: 40
     }
-},
-    computed: {  },
-    watch: {  },
-    created() {
-        let vm=this;
-        // vm.wordURL = this.$route.query.wordURL;
-
-        const xhr = new XMLHttpRequest();
-        xhr.open("get", this.wordURL, true);
-        xhr.responseType = "arraybuffer";
-        xhr.onload = function () {
-        if (xhr.status == 200) {
-            mammoth
-            .convertToHtml({ arrayBuffer: new Uint8Array(xhr.response) })
-            .then(function (resultObject) {
-                debugger
-                vm.$nextTick(() => {
-                // document.querySelector("#wordView").innerHTML =
-                //   resultObject.value;
-                    vm.vHtml=resultObject.value;
-                });
-            });
-        }
-        };
-        xhr.send();
   },
+  data () {
+    return {
+      isRolling: true
+    }
+  },
+  watch: {
+    rollingHeight (val, oldVal) {
+      console.log(0)
+      if (val && val !== oldVal) {
+        console.log(1)
+        // this.isRolling = this.$refs.rollingContainer.offsetHeight - this.rollingHeight > 0
+        // this.$refs.rollingContainer.style.height = this.$refs.rollingContainer.offsetHeight * 2 + 'px';
+      }
+    }
+  },
+  mounted(){
+    console.log(2)
+        // this.$refs.rollingContainer.style.height = this.$refs.rollingContainer.offsetHeight * 2 + 'px';
+
+  }
 }
 </script>
+<style scoped>
+.rolling{
+  overflow: hidden;
+  height: 60px;
+}
+.animation {
+    animation: moving 5s linear infinite;
+  }
+  /*定义动画*/
+  @keyframes moving {
+    form {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-50%);
+    }
+  }
+
+</style>

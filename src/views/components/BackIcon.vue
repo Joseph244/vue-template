@@ -20,7 +20,8 @@
         :class="$style.backIcon"
         @click="routeBack"
             >
-        返回<img src="../../images/backIcon.png" />
+        返回
+        <i class="icon icon-backIcon"></i>
     </div>
 </template>
 <script>
