@@ -1,60 +1,95 @@
+.el-button {
+    color: #fff;
+    border-radius: @border-radius-base;
+}
+
+.el-button--default {
+    background: #84c4c2;
+    border-color: cyan;
+    &:hover,
+    &:active {
+        background-color: transparent;
+        border-color: #84c4c2;
+    }
+}
 .el-button--default {
 }
 .el-button--medium {
 }
 .el-button--small {
-    padding: 7px 15px;
+    padding: 9px 15px;
 }
 .el-button--mini {
     padding: 5px 10px;
 }
+.el-button--text {
+    color: #00ffff;
+}
 .el-button--primary {
-    background: #00ffff85;
-    border-color: rgb(0, 255, 255);
-    color: #fff;
-}
-// .el-button--primary:focus,
-.el-button--primary:hover {
-    color: #0ff;
-    background-color: transparent;
-    border-color: #0ff;
+    background: @color-primary;
+    border-color: #339999;
+    &:hover,
+    &:active {
+        background-color: #1b9792;
+        border-color: #339999;
+    }
 }
 
+.el-button--info {
+    background-color: @color-info;
+    border-color: #339966;
+    &:hover,
+    &:active {
+        background-color: #0c5b58;
+        border-color: #339966;
+    }
+}
 .el-button--danger {
-    background: #fc6868c7;
-    border-color: #fc6868c7;
-    color: #fff;
-}
-// .el-button--success:focus,
-.el-button--success:hover {
-    color: #0ff;
-    background-color: transparent;
-}
-// .el-button--danger:focus,
-.el-button--danger:hover {
-    color: #fc6868;
-    background-color: transparent;
-    border-color: #fc6868;
+    background: @color-danger;
+    border-color: #f95c60;
+    &:hover,
+    &:active {
+        background-color: #f95c60;
+        border-color: #f95c60;
+    }
 }
 
-// .el-button--warning:focus,
-.el-button--warning:hover {
-    color: #e6a23c;
-    background-color: transparent;
+.el-button--success {
+    background-color: @color-success;
+    border-color: #0bf8b9;
+    &:hover,
+    &:active {
+        background-color: #0bf8b9;
+    }
 }
-// .el-button--info:focus,
-.el-button--info:hover {
-    color: #909399;
-    background-color: transparent;
+
+.el-button--warning {
+    background-color: @color-warning;
+    border-color: #84814e;
+    &:hover,
+    &:active {
+        border-color: #ada85e;
+        background-color: #cbb171;
+    }
 }
 
 .el-button.is-disabled,
 .el-button.is-disabled:focus,
 .el-button.is-disabled:hover {
-    color: #c0c4cc;
+    color: #ffffff;
     cursor: not-allowed;
     background-image: none;
-    background-color: #1b509f00;
-    border-color: #c0c4cc;
+    background-color: #414c4b;
+    border-color: #707070;
     box-shadow: none;
+}
+
+// plain
+.el-button--primary.is-plain {
+    background: #00ffff;
+    border-color: #00ffff;
+    color: #003333;
+}
+.el-button--primary.is-plain:hover {
+    .el-button--primary();
 }

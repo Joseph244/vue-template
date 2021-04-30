@@ -1,76 +1,56 @@
+<style lang="less" module>
+.test {
+    width: 200px;
+}
+</style>
 <template>
-    <div class="warp">
-        <ul ref="annn" class="ul-item animation">
-            <li v-for="(item, index) in listData" :key="index" class="li-item">
-                {{ item }}
-            </li>
-            <li v-for="(item, index) in listData" :key="index" class="li-item">
-                {{ item }}
-            </li>
-        </ul>
+    <div :class="$style.test">
+        <span v-label-shake>开发建设的方法绝地反击副教授副教授就</span>
+        <div>
+            <!-- <el-input v-model="input1" placeholder="请输入内容" /> -->
+            <!-- <input :value="oldNum" @input="change" @change="change" /> -->
+
+            <input v-model="input1" v-input-number />
+            <input v-model="input2" v-input-number.float />
+            <input v-model="input3" v-input-number.int />
+            <input ref="file" type="file" name="file" webkitdirectory @change.stop="changesData" />
+        </div>
     </div>
 </template>
-
 <script>
-  export default {
-    name: 'Example03Basic',
-    data () {
-      return {
-        listData: [1, 222222222, 3, 4, 5, 6],
-        classOption: {
-          limitMoveNum: 0,
-          direction: 2,
-        }
-      }
+// import {} from '@/api'
+export default {
+    name: 'Test',
+    data() {
+        return {
+            input1: null,
+            input2: null,
+            input3: null,
+            input4: null,
+            oldNum: null
+        };
     },
-    mounted(){
-      console.log(this.$refs.annn.offsetWidth, this.$refs.annn.style.width)
-      this.$refs.annn.style.width = this.$refs.annn.offsetWidth / 2 + 'px'
-    }
-  }
-</script>
-
-<style lang="less" scoped>
-:global{
-.animation {
-    width: max-content;   // 此时由于放了两遍子元素，所以max-content的宽度是子元素的两倍；结合this.$refs.annn.style.width = this.$refs.annn.offsetWidth / 2 + 'px'，使得滚动距离为实际子元素的宽度
-    // width: 300px;  // 子元素的总宽度
-    animation: moving 2s linear infinite;
-  }
-  /*定义动画*/
-  @keyframes moving {
-    form {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);   // 此处的100%是指.wrap，实际应该是所有元素的总长才对
-    }
-  }
-  .warp {
-    width: 200px;
-    height: 120px;
-    margin: 0 auto;
-    overflow: hidden;
-    border: 1px solid red;
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 auto;
-      &.ul-item {
-        display: flex;
-        .li-item {
-          width: fit-content;
-          height: 120px;
-          margin-right: 10px;
-          line-height: 120px;
-          background-color: #999;
-          color: #fff;
-          text-align: center;
-          font-size: 30px;
+    computed: {
+        input() {
+            return this.oldNum;
         }
-      }
+    },
+    watch: {},
+    created() {
+        
+    },
+    methods: {
+        changesData(val) {
+            console.log(this.$refs.file.files);
+        },
+        change(event) {
+            let val = event.target.value.trim();
+            if (/^[1-9]\d*$|^$/.test(val)) {
+                this.oldNum = val;
+            } else {
+                event.target.value = this.oldNum;
+            }
+        }
     }
-  }
-}
-
-</style>
+};
+</script>

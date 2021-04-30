@@ -1,4 +1,4 @@
-<style lang='less' module>
+<style lang="less" module>
 .backIcon {
     cursor: pointer;
     color: #00ffff;
@@ -16,13 +16,7 @@
 }
 </style>
 <template>
-    <div
-        :class="$style.backIcon"
-        @click="routeBack"
-            >
-        返回
-        <i class="icon icon-backIcon"></i>
-    </div>
+    <div :class="$style.backIcon" @click="routeBack">返回<img src="../../images/backIcon.png" /></div>
 </template>
 <script>
 export default {

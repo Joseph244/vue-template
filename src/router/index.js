@@ -80,7 +80,6 @@ const tokenCheck = (to, from, next) => {
         if (!getCookie('TOKEN')) {
             Message.error('您的登录状态已过期，请重新登录！');
             window.location = 'http://192.168.78.104:3001/login';
-            return;
         } else {
             next();
         }

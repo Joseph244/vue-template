@@ -4,20 +4,8 @@
  * @param {fmt} 结果格式
  * @return:
  */
-
-//首先要对HTMLElement进行类型检查，因为即使在支持HTMLElement
-//的浏览器中，类型却是有差别的，在Chrome,Opera中HTMLElement的
-//类型为function，此时就不能用它来判断了
-const isDOM =
-    typeof HTMLElement === 'object'
-        ? function(obj) {
-              return obj instanceof HTMLElement;
-          }
-        : function(obj) {
-              return obj && typeof obj === 'object' && obj.nodeType === 1 && typeof obj.nodeName === 'string';
-          };
 const dateFormat = (dateTime, fmt = 'yyyy-MM-dd hh:mm:ss') => {
-    let date = new Date(dateTime);
+    let date = new Date(+dateTime);
     let o = {
         'M+': date.getMonth() + 1,
         'd+': date.getDate(),
@@ -58,7 +46,7 @@ const getQueryObject = url => {
     return obj;
 };
 
-// 过滤对象属性得到非空key的值
+// 过滤对象属性key，得到新对象
 const filterNotNullObj = sourceObj => {
     let targetObj = {};
     let notNull = false; // 非空标志位
@@ -74,7 +62,7 @@ const filterNotNullObj = sourceObj => {
     return notNull && targetObj;
 };
 
-// 过滤对象属性得到非空key的值
+// 全屏切换方法
 const fullScreen = elem => {
     if (!elem) {
         elem = document.querySelector('body');
@@ -89,7 +77,7 @@ const fullScreen = elem => {
         document.exitFullscreen();
     }
 };
-/**数组根据数组对象中的某个属性值进行排序的方法
+/** 对象数组中按照对象的某个属性进行排序方法
  * 使用例子：newArray.sort(sortBy('number','desc')) //表示根据number属性降序排列;若第二个参数不传递，默认表示升序排序
  * @param attr 排序的属性 如number属性
  * @param rev asc表示升序排列(默认)，desc降序排序
@@ -117,10 +105,15 @@ const objArraySortBy = function(attr, rev = 'asc') {
         return 0;
     };
 };
+// 去除字符串特殊字符，返回去处置后的结果
+const stringFilter = val => {
+    return val.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]+/g, '');
+};
 export default {
     dateFormat,
     filterNotNullObj,
     getQueryObject,
     fullScreen,
-    objArraySortBy
+    objArraySortBy,
+    stringFilter
 };

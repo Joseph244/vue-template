@@ -5,3 +5,6 @@ const req = require.context('./icons', false, /\.svg$/);
 const iconMap = requireAll(req);
 
 Vue.prototype.$IconSvg = iconMap.map(e => e.default.id.slice(3));
+
+// 使用
+// <svgIcon name="backIcon-2" />

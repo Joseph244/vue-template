@@ -20,18 +20,22 @@
 .el-radio {
     .el-radio__inner {
         background-color: transparent;
-        border-color: #0ff;
+        // border-color: #0ff;
+        &::after {
+            width: 6px;
+            height: 6px;
+        }
     }
     .el-radio__label {
-        color: #0ff;
+        // color: #0ff;
     }
 
     &.is-checked {
         .el-radio__inner {
-            background: #05d1c9;
+            background: none;
         }
         .el-radio__label {
-            color: #ffffff;
+            color: #00ffff;
         }
     }
 }

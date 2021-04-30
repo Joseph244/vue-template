@@ -1,21 +1,109 @@
-import Main from '@/views/Main';
+import ContentArea from '@/views/layout/ContentArea.vue';
 
 export const appRouter = [
     {
-        path: '/',
-        title: '首页',
-        component: Main,
-        redirect: 'test',
+        path: '/sensorMenu',
+        name: 'sensorMenu',
+        title: '传感器接入',
+        icon: 'el-icon-connection',
+        redirect: '/sensor',
+        component: ContentArea,
         children: [
             {
-                path: 'dashboard',
-                name: 'dashboard',
-                icon: 'el-icon-s-home',
-                meta: {
-                    hidden: true, // hidden 配置表示是子页面，不会校验权限，也不会作为左侧菜单显示
-                    breadMenu: 'dashboard' // 面包屑显示的菜单名
-                },
-                component: () => import('@/views/dashboard/index')
+                path: '/sensor',
+                name: 'sensor',
+                title: '传感器接入',
+                component: resolve => {
+                    require(['@/views/sensor/index.vue'], resolve);
+                }
+            }
+        ]
+    },
+    {
+        path: '/sensorConfigMenu',
+        name: 'sensorConfigMenu',
+        title: '传感器配置',
+        icon: 'el-icon-edit-outline',
+        redirect: '/sensorConfig',
+        component: ContentArea,
+        children: [
+            {
+                path: '/sensorConfig',
+                name: 'sensorConfig',
+                title: '传感器配置',
+                component: resolve => {
+                    require(['@/views/sensorConfig/index.vue'], resolve);
+                }
+            }
+        ]
+    },
+    {
+        path: '/equListMenu',
+        name: 'equListMenu',
+        title: '列表与导入',
+        icon: 'el-icon-date',
+        redirect: '/equList',
+        component: ContentArea,
+        children: [
+            {
+                path: '/equList',
+                name: 'equList',
+                title: '列表与导入',
+                component: resolve => {
+                    require(['@/views/equList/index.vue'], resolve);
+                }
+            }
+        ]
+    },
+    {
+        path: '/exportExcel',
+        name: 'exportExcel',
+        title: '导出excel',
+        icon: 'el-icon-search',
+        redirect: '/test',
+        component: ContentArea,
+        children: [
+            {
+                path: '/exportExcel',
+                name: 'exportExcel',
+                title: '导出excel',
+                component: resolve => {
+                    require(['@/views/exportExcel/index.vue'], resolve);
+                }
+            }
+            // {
+            //     path: '/vueDraggable',
+            //     name: 'vueDraggable',
+            //     title: '拖拽组件',
+            //     component: resolve => {
+            //         require(['@/views/demo/vueDraggable/index.vue'], resolve);
+            //     }
+            // },
+        ]
+    },
+    {
+        path: '/',
+        name: 'demos',
+        title: 'DEMOS',
+        icon: 'el-icon-collection',
+        redirect: '/tableHeightMixin',
+        component: ContentArea,
+        children: [
+            {
+                path: '/tableHeightMixin',
+                name: 'tableHeightMixin',
+                title: '表格自适应',
+                component: resolve => {
+                    require(['@/views/demos/tableHeightMixin.vue'], resolve);
+                }
+            },
+            {
+                path: '/spriteComp',
+                name: 'spriteComp',
+                title: '雪碧图',
+                component: resolve => {
+                    require(['@/views/demos/spriteComp.vue'], resolve);
+                }
             },
             {
                 path: '/test',
@@ -23,57 +111,6 @@ export const appRouter = [
                 title: '测试页面',
                 component: resolve => {
                     require(['@/views/demo/test/index.vue'], resolve);
-                }
-            },
-            {
-                path: '/docx',
-                name: 'docx',
-                title: '测试页面',
-                component: resolve => {
-                    require(['@/views/demo/test/docx.vue'], resolve);
-                }
-            }
-        ]
-    },
-    {
-        path: '/demo',
-        name: 'demo',
-        title: '页面案例',
-        icon: 'el-icon-s-marketing',
-        component: Main,
-        children: [
-            {
-                path: '/css3Animation',
-                name: 'css3Animation',
-                title: 'css3固定动画',
-                component: resolve => {
-                    require(['@/views/demo/css3Animation/index.vue'], resolve);
-                }
-            },
-            {
-                path: '/vueDraggable',
-                name: 'vueDraggable',
-                title: '拖拽组件',
-                component: resolve => {
-                    require(['@/views/demo/vueDraggable/index.vue'], resolve);
-                }
-            }
-        ]
-    },
-    {
-        path: '/networkManage',
-        name: 'networkManage',
-        title: '网络管理',
-        icon: 'el-icon-s-marketing',
-        redirect: '/topology',
-        component: Main,
-        children: [
-            {
-                path: '/topology',
-                name: 'topology',
-                title: '网络拓扑',
-                component: resolve => {
-                    require(['@/views/demo/topology/index.vue'], resolve);
                 }
             }
         ]

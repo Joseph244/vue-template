@@ -40,7 +40,7 @@
     <div :class="$style.test">
         <draggable v-model="arr1" :scroll="true" animation="300">
             <transition-group>
-                <div v-for="item in [...arr1, ...arr1, ...arr1]" :key="item.id" :class="item.id == 1 ? 'item forbid' : 'item'">
+                <div v-for="item in arr1" :key="item.id" :class="item.id == 1 ? 'item forbid' : 'item'">
                     {{ item.name }}
                 </div>
             </transition-group>

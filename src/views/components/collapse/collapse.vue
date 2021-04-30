@@ -4,26 +4,14 @@
 
 <template>
     <div :class="$style.container">
-        <div
-            :class="$style.title"
-            :style="titleStyle || ''"
-                >
+        <div :class="$style.title" :style="titleStyle || ''">
             <h2>{{ title }}</h2>
-            <a
-                :class="$style.icon"
-                @click="showChange"
-                    >
-                <Icon
-                    :class="`${isOpen ? $style.up : $style.down}`"
-                    type="ios-arrow-up"
-                        />
+            <a :class="$style.icon" @click="showChange">
+                <Icon :class="`${isOpen ? $style.up : $style.down}`" type="ios-arrow-up" />
             </a>
         </div>
         <transUpDown>
-            <div
-                v-show="isOpen"
-                :class="$style.content"
-                    >
+            <div v-show="isOpen" :class="$style.content">
                 <slot></slot>
             </div>
         </transUpDown>

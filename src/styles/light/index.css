@@ -12484,8 +12484,8 @@
     border-color: #519fee;
 }
 .el-radio__inner::after {
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
     border-radius: 100%;
     background-color: #fff;
     content: '';

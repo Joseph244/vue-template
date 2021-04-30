@@ -1,51 +1,81 @@
+<style lang="less" module>
+.systemHeader {
+    width: 100%;
+    height: 80px;
+    padding: 0 20px;
+    background: @header-bg;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > div,
+    .author {
+        display: flex;
+        align-items: center;
+    }
+    .author {
+        color: @color-title;
+    }
+    .title {
+        color: @color-title;
+        font-size: 24px;
+        letter-spacing: 2px;
+        font-weight: bold;
+    }
+
+    .titleLogo {
+        content: @logo;
+        height: 54px;
+        margin-right: 10px;
+    }
+    .icon {
+        fill: @color-title;
+        width: 30px;
+        height: 30px;
+        margin: 0 10px;
+    }
+
+    .fullScreenBtn {
+        color: @color-title;
+        font-size: 20px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+}
+</style>
 <template>
     <header :class="$style.systemHeader">
-        <div :class="$style.company">
-            <img v-show="companyInfo.companyLogo" :class="$style.companyLogo" src="../../images/stateGrid_whiteLogo.png" />
-            <div>
-                <div :class="$style.chineseTitle">
-                    {{ companyInfo.mainTitle.split('/')[0] || '' }}
-                </div>
-                <div :class="$style.englishTitle">
-                    {{ companyInfo.subTitle.split('/')[0] || '' }}
-                </div>
-                <div v-show="companyInfo.mainTitle" style="border:1px solid #c4fafa9c;width:10em;"></div>
-                <div :class="$style.chineseTitle">
-                    {{ companyInfo.mainTitle.split('/')[1] || '' }}
-                </div>
-                <div :class="$style.englishTitle">
-                    {{ companyInfo.subTitle.split('/')[1] || '' }}
-                </div>
+        <div>
+            <img :class="$style.titleLogo" alt="" />
+            <div :class="$style.title">
+                {{ title }}
             </div>
         </div>
-        <img src="../../images/title-decorate.png" :class="$style.titleBefore" />
-        <img :class="$style.titleLogo" alt="" />
-        <span :class="$style.title">
-            {{ title }}
-        </span>
-        <img src="../../images/title-decorate.png" :class="$style.titleAfter" />
-        <el-tooltip effect="dark" :content="fullScreenFlag ? '退出全屏' : '全屏显示'" placement="top">
-            <i :class="$style.fullScreenBtn" class="el-icon-full-screen" @click="fullScreen"></i>
-        </el-tooltip>
+        <div>
+            <el-tooltip effect="dark" :content="fullScreenFlag ? '退出全屏' : '全屏显示'" placement="top">
+                <i :class="$style.fullScreenBtn" class="el-icon-full-screen" @click="fullScreen"></i>
+            </el-tooltip>
+            <div :class="$style.author">
+                <!-- svg组件使用 -->
+                <svgIcon :class="$style.icon" name="user" />
+                <div>{{ authorName }}</div>
+            </div>
+        </div>
     </header>
 </template>
 <script>
+import Api from '@/api/other';
+import tools from '@/tools';
 export default {
     name: 'Header',
     data() {
         return {
-            companyInfo: {
-                companyLogo: '../../images/stateGrid_whiteLogo.png',
-                mainTitle: '国家电网/国网江苏省电力有限公司电力科学研究院',
-                subTitle: 'STATE GRID/STATE GRID JIANGSU ELECTRIC POWER CO.,LTD RESEARCH INSTITUT'
-            },
             fullScreenFlag: false,
-            title: '网络统一管理平台'
+            title: process.env.VUE_APP_TITLE
         };
     },
     computed: {
         authorName() {
-            return this.$store.state.authorName;
+            return this.$store.state.authorName || '管理员';
         }
     },
     methods: {
@@ -56,60 +86,3 @@ export default {
     }
 };
 </script>
-<style lang="less" module>
-.systemHeader {
-    width: 100%;
-    padding: 6px 10px;
-    background: linear-gradient(
-        90deg,
-        rgba(9, 67, 66, 0.9) 0%,
-        rgba(9, 67, 66, 0.9) 20%,
-        rgba(5, 159, 154, 1) 50%,
-        rgba(9, 67, 66, 0.9) 80%,
-        rgba(9, 67, 66, 0.9) 100%
-    );
-    border: 1px solid #149593;
-    display: flex;
-    align-items: center;
-   
-    .company {
-        color: @color-title;
-        font-size: 14px;
-        color: #c4fafa;
-        font-family: 黑体;
-        display: flex;
-        .companyLogo {
-            height: 1.8em;
-            margin-right: 5px;
-        }
-        .chineseTitle {
-            font-weight: bold;
-        }
-        .englishTitle {
-            font-size: 10px;
-        }
-    }
-    .title {
-        color: @color-title;
-        font-size: 24px;
-    }
-    .titleBefore {
-        transform: rotate(180deg);
-    }
-    .titleAfter {
-    }
-    .titleLogo {
-        content: url('../../styles/iot/imgs/logo-white.png');
-        height: 28px;
-        margin-right: 10px;
-        margin-top: 2px;
-    }
-    .fullScreenBtn {
-        position: absolute;
-        right: 20px;
-        color: #149593;
-        font-size: 20px;
-        cursor: pointer;
-    }
-}
-</style>

@@ -1,4 +1,4 @@
-<style lang='less' module>
+<style lang="less" module>
 .tabs {
     height: 40px;
     display: flex;
@@ -53,12 +53,7 @@
 <template>
     <dl :class="$style.tabs">
         <dt><slot></slot></dt>
-        <dd
-            v-for="(item, index) in tabConfig"
-            :key="index"
-            :class="curTabIndex === index ? $style.active : ''"
-            @click="tabChange(index)"
-                >
+        <dd v-for="(item, index) in tabConfig" :key="index" :class="curTabIndex === index ? $style.active : ''" @click="tabChange(index)">
             <span>{{ item.label }}</span>
             <i></i>
         </dd>

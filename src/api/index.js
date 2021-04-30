@@ -1,9 +1,10 @@
+import Cookies from 'js-cookie';
 import Axios from 'axios'; // 此处引入axios官方文件
 import { Notification } from 'element-ui';
 
 const axios = Axios.create({
     baseURL: process.env.VUE_APP_BASEURL || '',
-    timeout: 30000
+    timeout: 50000
 });
 
 // Promise全局异常捕获
@@ -14,6 +15,8 @@ const axios = Axios.create({
 // 添加请求拦截器
 axios.interceptors.request.use(
     function(config) {
+        // 在这里做认证，可以从store里面获取token
+        // config.headers['Authorization'] = `Bearer ${store.getters.getAccessToken}`
         if (config.method.toLocaleLowerCase() === 'post' || config.method.toLocaleLowerCase() === 'put') {
             // 参数统一处理，请求都使用data传参
             config.data = config.data.data;
@@ -42,17 +45,9 @@ axios.interceptors.response.use(
                 message: '资源不存在',
                 type: 'error'
             });
-        } else if (response.status == 200 || response.status == 304) {
+        } else if (response.status == 200 || response.status == 201 || response.status == 304) {
             // 自定义约定接口返回{code: xxx, data: xxx, msg:'err message'}
-            // code:200 数据正常； ！200 数据获取异常
             if (response.data.code == 200) {
-                if (response.config.method.toLocaleLowerCase() === 'post' || response.config.method.toLocaleLowerCase() === 'put') {
-                    Notification({
-                        title: '成功',
-                        message: response.data.msg,
-                        type: 'success'
-                    });
-                }
                 return response.data.data;
             } else if (response.data.code == 401) {
                 Notification({
@@ -60,6 +55,7 @@ axios.interceptors.response.use(
                     message: '登录状态已过期，请重新登录！',
                     type: 'error'
                 });
+                Cookies.remove('token');
                 window.location.href = window.location.origin;
             } else {
                 Notification({

@@ -15,7 +15,7 @@ let myBus = new Vue();
 //      proxy_set_header Connection "upgrade";
 // }
 const href = process.env.NODE_ENV == 'development' ? '192.168.78.228:3002' : window.location.host;
-const websocketUrl = `ws://${href}/iotInfo/sensorResponse`;
+const websocketUrl = `ws://${href}/iotInfo/sensorResponse`; // websocket 接口地址
 /**
  * @param {eventName: 事件名称}
  * @param {command: 事件操作['add'为注册,'delete'为下线]}
@@ -39,7 +39,7 @@ let connectWebsocket = callback => {
                 eventName: 'init'
             })
         );
-        callback ? callback() : '';
+        callback && callback();
         // 接收消息
         mysocket.onmessage = msg => {
             let socketContent = JSON.parse(msg.data);

@@ -1,12 +1,12 @@
 <template>
     <svg aria-hidden="true">
-        <use :xlink:href="icon" />
+        <use :xlink:href="icon"></use>
     </svg>
 </template>
 
 <script>
 export default {
-    name: 'IconSvg',
+    name: 'icon-svg',
     props: {
         name: {
             type: String,

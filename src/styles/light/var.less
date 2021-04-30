@@ -1,9 +1,5 @@
 @logo: url('./imgs/logo.png'); // 系统logo
 @bg: #fafbff; // 全局背景
-@contentBg: none; // 内容区域背景
-@headerBg: #3399ff; // 标题背景
-// 页面背景色系
-@header-bg: #3399ff; // 标题背景色
 
 @color-title: #ffffff; // 系统标题色
 // 页面文字色系
@@ -13,11 +9,14 @@
 @color-light: #3793f0; // 高亮色
 @color-black: #ffffff; // 基础黑（如主要页面文字相反的黑色）
 
-@background-primary: #5fafff; // 界面元素主要背景色
-@background-secondary: #dbe9f5;
-@background-white-secondary: #eef5fdb0;
-@background-dark: none; // 深的背景色
-@background-black: #eaf1f9;
+// 页面背景色系
+@header-bg: #3399ff; // 标题背景色
+
+@background-primary: #049796; // 界面元素主要背景色
+@background-secondary: #f0f8ff;
+@background-white: rgba(68, 156, 153, 0.8); // 模态背景色
+@background-white-secondary: rgba(25, 118, 115, 0.8); // 模态背景色
+@background-dark: none; // 更加深的背景色
 
 @border-radius-base: 2px; // 组件/浮层圆角
 @border-color: #c7c7c7; // 边框色
@@ -34,6 +33,22 @@
 @disabled-color: #b2bbc4; // 失效色
 @color-text-placeholder: #c0c4cc; // 占位颜色
 
-@content-table-bg: none;
-@content-margin-top: 0px;
-@content-padding-top: 0px;
+// workBench
+@workBench-left-bg: #f0f8ff;
+@workBench-left-sensorType-bg: #ffffff;
+@workBench-left-sensorType-icon-bg: #f1f8ff;
+@workBench-left-sensorType-hover-bg: #e5f3ff;
+@workBench-left-sensorType-hover-icon-bg: #d2eaff;
+@workBench-left-sensorType-count-bg: #d2eaff;
+@workbench-left-sensortype-icon-color: #136cfb;
+@workbench-left-sensortype-icon-hover-color: #136cfb;
+@workBench-right-online: @color-success;
+@workBench-right-offline: @color-danger;
+
+// sensorTypeDetail
+@sTypeDetail-bg1: #eef2f6;
+@sTypeDetail-bg2: #f0f8ff;
+@sTypeDetail-color1: @color-primary;
+
+// sensorConfig
+@sConfig-border-color: #ebeef5;

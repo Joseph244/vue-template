@@ -1,4 +1,4 @@
-<style lang='less' module>
+<style lang="less" module>
 .miniBreadcrumb {
     color: #00ffff;
     padding: 8px 0;
@@ -14,10 +14,7 @@
 </style>
 <template>
     <div :class="$style.miniBreadcrumb">
-        <span
-            v-for="(item, index) in data"
-            :key="index"
-                >
+        <span v-for="(item, index) in data" :key="index">
             {{ item.label }}
         </span>
     </div>

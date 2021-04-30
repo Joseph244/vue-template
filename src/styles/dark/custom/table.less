@@ -1,29 +1,30 @@
 .el-table {
-    &::before {
-        background-color: transparent;
+    @headerBgColor: rgba(0, 0, 0, 0.5);
+    @selectedColor: @color-hover;
+    background-color: transparent;
+    .el-table__expand-icon {
+        color: #00fff6;
     }
-    background: transparent;
-    // border: 1px solid rgba(5, 180, 180, 0.22);
 
     .el-table__header {
         thead tr th {
             border: none;
             font-size: 15px;
+            font-weight: bold;
             color: rgb(239, 245, 245);
-            background-color: rgba(5, 156, 156, 1);
+            background-color: #006666;
             text-align: center;
             height: 40px;
             line-height: 40px;
             padding: 0;
         }
     }
+
     .tdSty() {
         padding: 0;
         color: #eff5f5;
-        height: 60px;
-        line-height: 60px;
-        background-color: transparent;
         border-bottom: 1px solid #1ca2a3;
+        padding: 10px 0;
     }
     .el-table__body {
         background: rgba(5, 180, 180, 0.22);
@@ -31,12 +32,17 @@
             .tdSty();
         }
 
-        tr:nth-child(odd) {
-            background-color: rgba(4, 88, 87, 0.22);
-        }
-
-        tr:nth-child(2n) {
-            background-color: rgba(0, 0, 0, 0.15);
+        .el-table__row {
+            background-color: #033937;
+            &.el-table__row--striped td {
+                background-color: rgba(0, 0, 0, 0.15);
+            }
+            &.current-row > td,
+            &.current-row:hover > td,
+            &.el-table__row--striped.current-row td,
+            &.el-table__row--striped.current-row:hover td {
+                background: @selectedColor;
+            }
         }
     }
 
@@ -45,9 +51,14 @@
             border-right: 1px solid #1ca2a3;
         }
     }
-
+    .el-table__row {
+        .cell {
+            font-size: 14px;
+            text-align: center; // 默认居中排列
+        }
+    }
     &.el-table--enable-row-hover .el-table__body tr:hover > td {
-        background-color: transparent;
+        background-color: @headerBgColor;
     }
 
     .el-table__fixed-body-wrapper .el-table__body tbody tr td {
@@ -70,6 +81,12 @@
         .el-table__empty-text {
             font-size: 20px;
             color: #00fff6;
+            letter-spacing: 10px;
         }
     }
+}
+.el-table--border::after,
+.el-table--group::after,
+.el-table::before {
+    background-color: none;
 }
