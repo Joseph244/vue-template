@@ -20,7 +20,7 @@
         "url": "git@192.168.78.241:zhangzhengfei/fe-group.git"
     },
     "dependencies": {
-        "axios": "^0.19.2",
+        "axios": "^0.21.1",
         "core-js": "^2.6.5",
         "echarts": "^4.7.0",
         "echarts-gl": "^1.1.1",
