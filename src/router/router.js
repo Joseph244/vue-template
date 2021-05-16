@@ -1,31 +1,13 @@
-import ContentArea from '@/views/layout/ContentArea.vue';
+import Main from '@/views/main.vue';
 
-export const appRouter = [
-    {
-        path: '/sensorMenu',
-        name: 'sensorMenu',
-        title: '传感器接入',
-        icon: 'el-icon-connection',
-        redirect: '/sensor',
-        component: ContentArea,
-        children: [
-            {
-                path: '/sensor',
-                name: 'sensor',
-                title: '传感器接入',
-                component: resolve => {
-                    require(['@/views/sensor/index.vue'], resolve);
-                }
-            }
-        ]
-    },
+const menuRoutes = [
     {
         path: '/sensorConfigMenu',
         name: 'sensorConfigMenu',
         title: '传感器配置',
         icon: 'el-icon-edit-outline',
         redirect: '/sensorConfig',
-        component: ContentArea,
+        component: Main,
         children: [
             {
                 path: '/sensorConfig',
@@ -43,7 +25,7 @@ export const appRouter = [
         title: '列表与导入',
         icon: 'el-icon-date',
         redirect: '/equList',
-        component: ContentArea,
+        component: Main,
         children: [
             {
                 path: '/equList',
@@ -55,39 +37,39 @@ export const appRouter = [
             }
         ]
     },
-    {
-        path: '/exportExcel',
-        name: 'exportExcel',
-        title: '导出excel',
-        icon: 'el-icon-search',
-        redirect: '/test',
-        component: ContentArea,
-        children: [
-            {
-                path: '/exportExcel',
-                name: 'exportExcel',
-                title: '导出excel',
-                component: resolve => {
-                    require(['@/views/exportExcel/index.vue'], resolve);
-                }
-            }
-            // {
-            //     path: '/vueDraggable',
-            //     name: 'vueDraggable',
-            //     title: '拖拽组件',
-            //     component: resolve => {
-            //         require(['@/views/demo/vueDraggable/index.vue'], resolve);
-            //     }
-            // },
-        ]
-    },
+    // {
+    //     path: '/exportExcel',
+    //     name: 'exportExcel',
+    //     title: '导出excel',
+    //     icon: 'el-icon-search',
+    //     redirect: '/test',
+    //     component: Main,
+    //     children: [
+    //         {
+    //             path: '/exportExcel',
+    //             name: 'exportExcel',
+    //             title: '导出excel',
+    //             component: resolve => {
+    //                 require(['@/views/exportExcel/index.vue'], resolve);
+    //             }
+    //         },
+    // {
+    //     path: '/vueDraggable',
+    //     name: 'vueDraggable',
+    //     title: '拖拽组件',
+    //     component: resolve => {
+    //         require(['@/views/demo/vueDraggable/index.vue'], resolve);
+    //     }
+    // },
+    //     ]
+    // },
     {
         path: '/',
         name: 'demos',
         title: 'DEMOS',
         icon: 'el-icon-collection',
         redirect: '/tableHeightMixin',
-        component: ContentArea,
+        component: Main,
         children: [
             {
                 path: '/tableHeightMixin',
@@ -95,6 +77,22 @@ export const appRouter = [
                 title: '表格自适应',
                 component: resolve => {
                     require(['@/views/demos/tableHeightMixin.vue'], resolve);
+                }
+            },
+            {
+                path: '/echartsResize',
+                name: 'echartsResize',
+                title: 'echarts自适应',
+                component: resolve => {
+                    require(['@/views/demos/echartsResize.vue'], resolve);
+                }
+            },
+            {
+                path: '/echartsMap',
+                name: 'echartsMap',
+                title: 'echartsMap',
+                component: resolve => {
+                    require(['@/views/demos/echartsMap.vue'], resolve);
                 }
             },
             {
@@ -117,5 +115,13 @@ export const appRouter = [
     }
 ];
 
+const loginPage = {
+    path: '/login',
+    name: '登录',
+    component: resolve => {
+        require(['@/views/demos/login/login.vue'], resolve);
+    }
+};
 // 所有上面定义的路由都要写在下面的routers里
-export default appRouter;
+export const routes = [...menuRoutes, loginPage];
+export default menuRoutes;

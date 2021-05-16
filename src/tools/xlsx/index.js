@@ -20,3 +20,15 @@ function jsonTree2Excel(jsonTree) {
 }
 
 export default export2Excel;
+
+// 使用方式
+// import export2Excel from '@/tools/xlsx/index';
+// 导出文件
+// this.selectedRows为数组，其中元素对象的属性对应['sensorCode', 'sensorTypeName', 'equName', 'location', 'phase', 'online']
+// export2Excel(
+//     ['传感器标识', '传感器类型', '挂载电力设备', '安装位置', '相位', '在线状态'],
+//     ['sensorCode', 'sensorTypeName', 'equName', 'location', 'phase', 'online'],
+//     this.selectedRows,
+//     '传感器导出列表',
+//     [200, 200, 200, 120, 80, 80]
+// );

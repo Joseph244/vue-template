@@ -7,33 +7,7 @@ const dict = {
         equTypeList: [],
         voltageList: [],
         bayUnitList: [],
-        platformList: [
-            {
-                name: 'JSC平台'
-            },
-            {
-                name: '南瑞平台'
-            },
-            {
-                name: '华为平台'
-            }
-        ],
-        majors: [
-            {
-                majorId: 1,
-                majorName: '输电'
-            },
-            {
-                majorId: 2,
-                majorName: '变电'
-            },
-            {
-                majorId: 3,
-                majorName: '配电'
-            }
-        ],
-        unitList: [],
-        powerType: ['取电', '电池']
+        unitList: []
     },
     mutations: {
         SET_EquTypeList(state, val) {

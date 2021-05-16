@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { Message } from 'element-ui';
 import VueRouter from 'vue-router';
-import routers from './router';
+import { routes } from './router';
 import store from '../store/index'; // 导入vuex
 import { setCookie, getCookie } from '@/tools/storage'; // 导入vuex
 
@@ -16,8 +16,8 @@ const freeRoutes = ['error-403', 'error-404', 'error-500', 'waitingOpenPage'];
 
 // 路由配置
 const RouterConfig = {
-    // mode: 'history',
-    routes: routers
+    // mode: 'history',  // 'hash'
+    routes
 };
 
 /**
@@ -26,7 +26,7 @@ const RouterConfig = {
  * @return: true:存在，false: 不存在
  */
 let ifRoutExitFlag = function(goRouteName) {
-    let allRoute = routers;
+    let allRoute = routes;
     let exitFlag = false;
 
     function searchChildren(routeName, allRoute = []) {

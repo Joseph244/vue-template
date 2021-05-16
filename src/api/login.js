@@ -1,8 +1,14 @@
 import axios from './index';
 
 export default {
-    //  消息路由-获取消息路由信息（以表格的形式展示）
-    login: function(params) {
-        return axios.get('/message/login', { data: params });
-    }
+    // 登录
+    getLoginConfig: params => axios.get('/login/config', { params }),
+    // 登录
+    login: params => axios.post('/login/login', params),
+    // token认证
+    tokenValidate: params => axios.get('/login/tokenValidate', { params }),
+    // 登出
+    logout: params => axios.post('/login/logout', params),
+    // 后端生成验证码
+    verCode: params => axios.get('/login/verCode', { params })
 };

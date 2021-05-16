@@ -10,7 +10,7 @@
         "release:major": "npm version major",
         "prebuild": "echo '打包开始' & npm run release:patch",
         "postbuild": "echo '打包完毕'",
-        "build-all": "npm-run-all --parallel build-dark build-light",
+        "build-all": "npm-run-all --parallel build build-light",
         "build": "vue-cli-service build --mode prod",
         "build-light": "vue-cli-service build --mode prod.light",
         "lint": "vue-cli-service lint"

@@ -1,11 +1,18 @@
 <style lang="less" module>
 .test {
     width: 200px;
+    .led {
+        font-size: 30px;
+        letter-spacing: 2px;
+        font-family: 'LED';
+    }
 }
 </style>
 <template>
     <div :class="$style.test">
         <span v-label-shake>开发建设的方法绝地反击副教授副教授就</span>
+        <span :class="$style.led">1234567890</span>
+        <span :class="$style.led">{{ MAJORTYPES }}</span>
         <div>
             <!-- <el-input v-model="input1" placeholder="请输入内容" /> -->
             <!-- <input :value="oldNum" @input="change" @change="change" /> -->
@@ -36,9 +43,7 @@ export default {
         }
     },
     watch: {},
-    created() {
-        
-    },
+    created() {},
     methods: {
         changesData(val) {
             console.log(this.$refs.file.files);

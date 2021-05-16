@@ -1,7 +1,0 @@
-[defaults]
-url=http://192.168.78.247:9000
-org=sentry
-project=partialdischargediagnosis
-
-[auth]
-token=ab13c6d50589476e802ce02087cd660f52efaf6fdce54807af0e27f919643faa

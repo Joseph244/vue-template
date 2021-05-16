@@ -22,6 +22,7 @@ vue+elementUI+axios+vuex+vuerouter 的自动注册的后端开发模板
    - [ ]  接口数据缓存与重发机制
 
 7. - [ ] vuex 数据的本地化存储
+     - [ ] localStorage+插件 vuex-persist
 
 8. - [x] assset/svg 用于网络下载的 svg 图标直接使用
 
@@ -31,7 +32,7 @@ vue+elementUI+axios+vuex+vuerouter 的自动注册的后端开发模板
 
 11. - [ ] mixin 
     - [x] 实现表格高度随着窗口自适应
-    - [ ] echarts resize 窗口自适应
+    - [x] echarts resize 窗口自适应，与主题相结合
 
 12. - [ ] 权限控制 directive 自定义指令实现
 
@@ -45,17 +46,24 @@ vue+elementUI+axios+vuex+vuerouter 的自动注册的后端开发模板
     - [x] 导出页面数据到excel
     - [x] excel解析为json数据
     - [ ] 对称加解密方法
-    - [ ] echarts 地图组件集成
+    - [ ] 动态验证码后端生成方法
+    - [x] echarts 地图组件集成
+      - [ ] 地图点击事件demo页面开发（董）
+    - [x] echarts 主题配置与使用： 在系统主题切换时，echarts主题的切换
     - [ ] gis地图集成
     
-14. - [ ] 外部字体引入方式
+14. - [ ] 外部字体引入方式，需要验证打包之前和之后是否都可用（吴）
 
-15. - [ ] 大屏开发动画效果demo总结
-
+15. - [ ] 大屏开发动画效果demo总结（吴）
+      - [ ] 滑动表格组件封装
+      - [ ] 切页滑动组件封装
+    
 16. - [ ] fetch尝鲜替代axios请求方式集成
     - [ ] 前端单元测试集成方法可用性调研
 
 17. - [ ] 字体大小统一规划，按照模块设置，减少组件内过多font-size,也可通过h1 h2 h3 h4 h5 和全局变量统一设置部分常用字体
+
+18. - [ ] 登录逻辑实现
 
 - -------VUE2 框架工程模板（脚手架版本） -------
 - [ ] 仿照 fes.js 通过脚手架实现框架的自动选择，如左侧菜单还是顶部菜单等功能
@@ -71,8 +79,8 @@ vue+elementUI+axios+vuex+vuerouter 的自动注册的后端开发模板
 
 ---- Node Script (fe-deploy) 工作项 ---
 
-- [ ] 支持版本回退
-- [ ] 支持问询是否执行build 指令
+- [ ] 支持版本回退（发布时候要备份为dist_bak，回退时候修改文件夹名称）
+- [ ] 支持问询是否执行build 指令，默认执行
 
 ## 开发注意事项：
 

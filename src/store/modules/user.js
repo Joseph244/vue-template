@@ -1,5 +1,5 @@
 import { getCookie } from '@/tools/storage';
-import routers from '@/router/router.js';
+import menuRoutes from '@/router/router.js';
 
 /**
  * @description: 如果hidden = true,则不显示菜单
@@ -27,7 +27,7 @@ const userStore = {
         token: getCookie('TOKEN')
     },
     mutations: {
-        SET_ROUTES: (state, routes = routers) => {
+        SET_ROUTES: (state, routes = menuRoutes) => {
             const _arr = filterAsyncRoutes(routes);
             state.routes = _arr;
         }

@@ -43,13 +43,13 @@ export default {
     data() {
         return {
             dataList: [],
-            loading: false,
+            loading: false
         };
     },
     async created() {
-        console.info(this.PANELTYPES)    // 访问全局变量
-        this.globalFun()  // 调用全局方法
-        
+        console.info(this.PANELTYPES); // 访问全局变量
+        this.globalFun(); // 调用全局方法
+
         this.loading = true;
         this.dataList = await equApi.equTypeList();
         this.tableHeight = this.$refs.tableContent.offsetHeight;
